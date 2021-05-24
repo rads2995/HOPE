@@ -1,13 +1,6 @@
-///////////////////////////////////////////////////////////////////////////////
-//FILE: 'class_functions.cpp'
+// FILE: class_functions.cpp
 // Member functions of 'Cadac' class hierarchy
 // Member functions of class 'Variable'
-// 
-//010628 Created by Peter H Zipfel
-//011129 Adapted to SRAAM6 simulation, PZi
-//060510 Updated from F16C for CRUISE, PZi
-//100505 Modified for GHAME3, PZi
-///////////////////////////////////////////////////////////////////////////////
 
 #include "class_hierarchy.hpp"
 #include "global_header.hpp"
@@ -20,9 +13,7 @@ using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 //Constructor initializing   
-//
-//001220 Created by Peter H Zipfel
-//011129 Adapted to SRAAM6 simulation, PZi
+
 ///////////////////////////////////////////////////////////////////////////////
 
 Round3::Round3()
@@ -34,34 +25,30 @@ Round3::Round3()
 	//zeroing module-variable array
 	for(int i=0;i<NROUND3;i++)round3[i].init("empty",0," "," "," "," ");
 }
-///////////////////////////////////////////////////////////////////////////////
-//Constructor initializing the modules and the module-variable arrays
-//Reading input data from 'input.asc' and putting into 'round3' and 'cruise' arrays 
-//Writing banners to screen, 'tabout.asc' and to 'traj.asc' files  
+
+// Constructor initializing the modules and the module-variable arrays
+// Reading input data from 'input.asc' and putting into 'round3' and 'cruise' arrays 
+// Writing banners to screen, 'tabout.asc' and to 'traj.asc' files  
 //
-//Module-variable arrays:
-//	cruise[NCRUISE]		contains variables of modules under class 'Cruise'
-//	cruise3[ncruise3]	contains variables of all modules with empty slots removed
-//	scrn_cruise3[nscrn_cruise3]	contains variables to be displayed at screen and 'tabout.asc'
-//	plot_cruise3[nplot_cruise3] contains variables to be plotted, i.e., written to 'traj.asc'
-//	com_cruise3[ncom_cruise3] contains variables for communication among vehicles
-//  event_ptr_list[NEVENT] event pointer list
+//	Module-variable arrays:
+//		cruise[NCRUISE]		contains variables of modules under class 'Cruise'
+//		cruise3[ncruise3]	contains variables of all modules with empty slots removed
+//		scrn_cruise3[nscrn_cruise3]	contains variables to be displayed at screen and 'tabout.asc'
+//		plot_cruise3[nplot_cruise3] contains variables to be plotted, i.e., written to 'traj.asc'
+//		com_cruise3[ncom_cruise3] contains variables for communication among vehicles
+//  	event_ptr_list[NEVENT] event pointer list
 //
-//Index pointer arrays:	
-//	round3_scrn_ind[round3_scrn_count];
-//	cruise_scrn_ind[cruise_scrn_count];
-//	round3_plot_ind[round3_plot_count];
-//	cruise_plot_ind[cruise_plot_count];
-//	round3_com_ind[round3_com_count];
-//	cruise_com_ind[cruise_com_count];
-//
-//001220 Created by Peter H Zipfel
-//011129 Adapted to SRAAM6 simulation, PZi
-///////////////////////////////////////////////////////////////////////////////
+//	Index pointer arrays:	
+//		round3_scrn_ind[round3_scrn_count];
+//		cruise_scrn_ind[cruise_scrn_count];
+//		round3_plot_ind[round3_plot_count];
+//		cruise_plot_ind[cruise_plot_count];
+//		round3_com_ind[round3_com_count];
+//		cruise_com_ind[cruise_com_count];
 
 Cruise::Cruise(Module *module_list,int num_modules)
 {
-	//initializing coutners
+	//initializing counters
 	int i(0);
 	int j(0);
 
@@ -146,13 +133,8 @@ Cruise::Cruise(Module *module_list,int num_modules)
 	//building the index arrays of the data to be loaded into the packets of 'combus'
 	com_index_arrays();
 }
-///////////////////////////////////////////////////////////////////////////////
-//Destructor deallocating dynamic memory
-//				  
-//010115 Created by Peter H Zipfel
-//011129 Adapted to SRAAM6 simulation, PZi
-///////////////////////////////////////////////////////////////////////////////
 
+// Destructor deallocating dynamic memory
 Cruise::~Cruise()
 {
 	delete [] cruise;
@@ -168,14 +150,15 @@ Cruise::~Cruise()
 	delete [] cruise_com_ind;
 	delete [] &event_ptr_list;
 }
+
 ///////////////////////////////////////////////////////////////////////////////
 //////////////////// Members of class 'Vehicle' ///////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
-//Constructor of class 'Vehicle'
-//allocating dynamic memory for the array of pointers of type 'Cadac'
-//and returning the pointer to array
-//
-//010626 Created by Peter H Zipfel
+
+// Constructor of class 'Vehicle'
+// allocating dynamic memory for the array of pointers of type 'Cadac'
+// and returning the pointer to array
+
 ///////////////////////////////////////////////////////////////////////////////
 Vehicle::Vehicle(int number)
 {

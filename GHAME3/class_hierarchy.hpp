@@ -1,14 +1,7 @@
-///////////////////////////////////////////////////////////////////////////////
-//FILE: 'class_hierarchy.hpp'
-//Declares the derived classes 'Round3', 'Cruise''
+// FILE: class_hierarchy.hpp
+// Declares the derived classes 'Round3', 'Cruise''
 // of the base class 'Cadac'
 // and the global class 'Vehicles'
-//
-//030627 Created by Peter H Zipfel
-//060511 Updated to latest CADAC++ standards, PZi
-//060522 Inclusion of 'Satellite' object, PZi
-//100505 Modified for GHAME3, PZi
-///////////////////////////////////////////////////////////////////////////////
 
 #ifndef cadac_class_hierarchy__HPP
 #define cadac_class_hierarchy__HPP
