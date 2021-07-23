@@ -1,10 +1,15 @@
 ///////////////////////////////////////////////////////////////////////////////
-//FILE: 'global_constants.hpp'
-//Defines all global constant parameters
+// FILE: 'global_constants.hpp'
+// Defines all global constant parameters
 //
-//011128 Created by Peter H Zipfel
-//060510 Updated from F16C for CRUISE, PZi
-//100505 Modified for GHAME3, PZi
+// Date format ISO 8601 (YYYY-MM-DD)
+// 2001-11-28 Created by Peter H Zipfel
+// 2006-05-10 Updated from F16C for CRUISE, PZi
+// 2010-05-05 Modified for GHAME3, PZi
+//
+// Modifications performed by Rodrigo Duran
+// 2021-07-23 Implementation of auto member definition
+//
 ///////////////////////////////////////////////////////////////////////////////
 
 #ifndef global_constants__HPP

@@ -1,11 +1,17 @@
 ///////////////////////////////////////////////////////////////////////////////
-//FILE: 'global_header.hpp'
-//Declares the classes: 'Module', 'Variable', 'Document', 'Event', 'Packet'
+// FILE: 'global_header.hpp'
+// Declares the classes: 'Module', 'Variable', 'Document', 'Event', 'Packet'
 // and the stuctures 'Module'
 //
-//001206 Created by Peter Zipfel
-//060510 Updated from F16C for CRUISE, PZi
-//100505 Modified for GHAME3, PZi
+// Date format ISO 8601 (YYYY/MM/DD)
+//
+// 2000/12/06 Created by Peter Zipfel
+// 2006/05/10 Updated from F16C for CRUISE, PZi
+// 2010/05/05 Modified for GHAME3, PZi
+//
+// Modifications provided by Rodrigo Duran
+// 2021/07/23 
+//
 ///////////////////////////////////////////////////////////////////////////////
 
 //preventing warnings in MS C++8 for not using security enhanced CRT functions 
