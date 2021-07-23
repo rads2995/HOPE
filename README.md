@@ -1,6 +1,5 @@
-# CADAC-Simulations
-CADAC_Simulations C++ codes provided in the supplemental material from *Modeling and Simulation of Aerospace Vehicle dynamics, Third Edition.*
+# HOPE Aerospace Simulations
 
-No Visual Studio required. Use included makefile to compile and run the executable.
+Fork of the ten CADAC trajectory simulations written in C++ and provided as suplemental material in the book "*Modeling and Simulation of Aerospace Vehicle dynamics, Third Edition*" by Dr. Peter H. Zipfel.
 
-Credits go to Peter H. Zipfel.
+Microsoft Visual Studio is not required. Use included Makefile to compile.
