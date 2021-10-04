@@ -1,8 +1,8 @@
 # Define minimum required version for CMake
 cmake_minimum_required(VERSION 3.20.6...3.21.3)
 
-project(CRUISE5 VERSION 1.0
-        DESCRIPTION ""
+project(FitMacro VERSION 1.0
+        DESCRIPTION "Macronutrient calculator"
         LANGUAGES CXX)
 
 # The compiled library code resides here
