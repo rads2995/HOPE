@@ -7,11 +7,7 @@
 //060510 Updated from F16C for CRUISE, PZi
 ///////////////////////////////////////////////////////////////////////////////
 
-//preventing warnings in MS C++8 for not using security enhanced CRT functions 
-#define _CRT_SECURE_NO_DEPRECATE
-
-#ifndef global_header__HPP
-#define global_header__HPP
+#pragma once
 
 #include <fstream>
 #include <string>		
@@ -535,6 +531,3 @@ public:
 	///////////////////////////////////////////////////////////////////////////
 	void put_mod(char *mo){strcpy(mod,mo);}	
 };
-
-
-#endif

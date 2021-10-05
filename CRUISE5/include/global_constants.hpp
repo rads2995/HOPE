@@ -1,4 +1,5 @@
 // global_constants.hpp: Header file containing global constant parameters.
+#pragma once
 
 namespace constants {
     inline constexpr double REARTH = 6370987.308;       // Mean earth radius [m]

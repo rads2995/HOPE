@@ -3,15 +3,8 @@
 //Declares the derived classes 'Round3', 'Cruise', 'Target', and 'Satellite'
 // of the base class 'Cadac'
 // and the global class 'Vehicles'
-//
-//030627 Created by Peter H Zipfel
-//060511 Updated to latest CADAC++ standards, PZi
-//060522 Inclusion of 'Satellite' object, PZi
-//130703 Adapted to MS Visual C++ V10, PZi
 ///////////////////////////////////////////////////////////////////////////////
-
-#ifndef cadac_class_hierarchy__HPP
-#define cadac_class_hierarchy__HPP
+#pragma once
 
 #include "global_header.hpp"
 
@@ -19,9 +12,6 @@ using namespace std;
 
 ///////////////////////////////////////////////////////////////////////////////
 //Abstract base class: Cadac
-//
-//011128 Created by Peter H Zipfel
-//030627 Adapted to CRUISE simulation, PZi
 ///////////////////////////////////////////////////////////////////////////////
 class Cadac
 {
@@ -57,22 +47,16 @@ public:
 
 	///////////////////////////////////////////////////////////////////////////
 	//Constructor of class 'Cadac'
-	//
-	//010703 Created by Peter H Zipfel
 	///////////////////////////////////////////////////////////////////////////
 	Cadac(){}
 
 	///////////////////////////////////////////////////////////////////////////
 	//Setting vehicle object name
-	//
-	//010703 Created by Peter H Zipfel
 	///////////////////////////////////////////////////////////////////////////
 	void set_name(char *vehicle_name) {strcpy(name,vehicle_name);}
 
 	///////////////////////////////////////////////////////////////////////////
 	//Getting vehicle object name
-	//
-	//010703 Created by Peter H Zipfel
 	///////////////////////////////////////////////////////////////////////////
 	char *get_vname() {return name;}
 
@@ -131,9 +115,6 @@ public:
 //First derived class in the 'Cadac' hierarchy
 //Models atmosphere, gravitational acceleration and equations of motions
 //Contains modules: environment and Newton's law
-//
-//011128 Created by Peter H Zipfel
-//030627 Adapted to CRUISE simulation, PZi
 ///////////////////////////////////////////////////////////////////////////////
 class Round3:public Cadac
 {
@@ -210,9 +191,6 @@ public:
 //Second level of derived class of the 'Cadac' hierarchy
 //Models aerodynamics, propulsion, guidance and control 
 //Contains Modules: aerodynamics, propulsion, forces, control, guidance 
-//
-//011128 Created by Peter H Zipfel
-//030627 Adapted to CRUISE simulation, PZi
 ///////////////////////////////////////////////////////////////////////////////
 
 class Cruise:public Round3
@@ -341,8 +319,6 @@ public:
 //Second level of derived class of the 'Cadac' hierarchy, branching from 'Round3'
 //Models target accelerations
 //Contains Module 'forces' and 'intercept'
-//
-//010205 Created by Peter H Zipfel
 ///////////////////////////////////////////////////////////////////////////////
 
 class Target:public Round3
@@ -416,8 +392,6 @@ public:
 //
 //Second level of derived class of the 'Cadac' hierarchy, branching from 'Round3'
 //Contains Module 'forces' and 'seeker'
-//
-//010810 Created by Peter H Zipfel
 ///////////////////////////////////////////////////////////////////////////////
 
 class Satellite:public Round3
@@ -495,8 +469,6 @@ public:
 //Class 'Vehicle'
 //
 //Global class for typifying the array of vehicle pointers
-//
-//010629 Created by Peter Zipfel
 ///////////////////////////////////////////////////////////////////////////////
 class Vehicle
 {
@@ -511,5 +483,3 @@ public:
 	Cadac *operator[](int position);	//[] operator returns vehicle pointer
 	int size();	//returning 'howmany' vehicles are stored in vehicle list
 };
-
-#endif

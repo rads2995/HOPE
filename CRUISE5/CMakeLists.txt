@@ -1,8 +1,8 @@
 # Define minimum required version for CMake
 cmake_minimum_required(VERSION 3.20.6...3.21.3)
 
-project(FitMacro VERSION 1.0
-        DESCRIPTION "Macronutrient calculator"
+project(HOPE VERSION 1.0
+        DESCRIPTION "Aerospace Trajectory Simulations"
         LANGUAGES CXX)
 
 # The compiled library code resides here
