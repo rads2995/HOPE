@@ -51,71 +51,77 @@ Matrix::~Matrix() {
 }	
 
 // Print matrix to console
-void Matrix::print()
-{
-	double *pmem = pbody;
+void Matrix::print() {
+	
+    double *pmem = pbody;
 
-	//outside loop rows, inside loop columns
-	for(int i=0;i<num_row;i++){
-		for(int j=0;j<num_col;j++){
-			cout<<*pbody<<"\t";
+	// Outside loop rows, inside loop columns
+	for(int i = 0; i < num_row; i++) {
+        for(int j = 0; j < num_col; j++) {
+		    std::cout << *pbody << "\t";
 			pbody++;
 		}
-		cout<<'\n';
+		
+        std::cout << std::endl;
 	}
-	//resetting pointer
-	pbody=pmem;
-	cout<<"\n\n";
+	
+    // Resetting pointer
+	pbody = pmem;
+    std::cout << '\n' << std::endl;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Absolute value of vector
-//Example: avalue = VEC.absolute();
-///////////////////////////////////////////////////////////////////////////////
-double Matrix::absolute() 
-{
-	if(num_row>1&&num_col>1){cerr<<" *** Warning: not a vector 'Matrix::absolute()' *** \n";}
-	double ret=0.0;
+// Absolute value of vector
+double Matrix::absolute() {
 	
-	for(int i=0;i<num_elem;i++) 
-		ret+=(*(pbody+i))*(*(pbody+i));
-	ret=sqrt(ret);
-
+    if(num_row > 1 && num_col > 1) {
+        std::cerr << " *** Warning: not a vector 'Matrix::absolute()' *** \n";
+    }
+	
+    double ret = 0.0;
+	
+	for(int i = 0; i < num_elem; i++) 
+		ret += (*(pbody + i)) * (*(pbody + i));
+	
+    ret=sqrt(ret);
 	return ret;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Adjoint matrix (same as determinant procedure however the matrix element
-//is NOT multiplied into each cofactor)
-//Example: BMAT = AMAT.adjoint();
-///////////////////////////////////////////////////////////////////////////////
-Matrix Matrix::adjoint()
-{
-	if(!(num_row==num_col))
-	{cerr<<" *** Error: matrix not square 'Matrix::adjoint()' *** \n";system("pause");exit(1);}
-	if((num_row==1)&&(num_col==1))
-	{cerr<<" *** Error: only one element 'Matrix::adjoint()' *** \n";system("pause");exit(1);}
+// Adjoint matrix (same as determinant procedure however the matrix element
+// is NOT multiplied into each cofactor)
+Matrix Matrix::adjoint() {
+	
+    if(!(num_row == num_col)) {
+        std::cerr << " *** Error: matrix not square 'Matrix::adjoint()' *** \n";
+        system("pause");
+        exit(1);
+    }
+	
+    if((num_row == 1) && (num_col == 1)) {
+        std::cerr << " *** Error: only one element 'Matrix::adjoint()' *** \n";
+        system("pause");
+        exit(1);
+    }
 
-	Matrix RESULT(num_row,num_col);
+	Matrix RESULT(num_row, num_col);
 
-	for(int i=0;i<num_elem;i++){
-		//row #
-		int row=i/num_col+1;
-		//column #
-		int col=i%num_col+1;
+	for(int i = 0; i < num_elem; i++) {
+		
+        // Row number
+		int row = i / num_col + 1;
+		
+        // Column number
+		int col= i % num_col + 1;
 
-		if (((row+col)%2)==0)
-			*(RESULT.pbody+i)=sub_matrix(row,col).determinant();
-		else
-			*(RESULT.pbody+i)=(-1.0)*sub_matrix(row,col).determinant();
+		if (((row + col) % 2) == 0)
+            *(RESULT.pbody + i) = sub_matrix(row, col).determinant();
+		
+        else
+			*(RESULT.pbody + i) = (-1.0) * sub_matrix(row, col).determinant();
 	}
 	return RESULT.trans();
 }
 
-//////////////////////////////////////////////////////////////////////////////
 //Assigns a value to a matrix element (offset!)
-//Example: MAT.assign_loc(r,c,val); ((r+1)th-row, (c+1)th-col)
-///////////////////////////////////////////////////////////////////////////////
 void Matrix::assign_loc(const int &r, const int &c, const double &val)
 {
 	if(r>num_row-1||c>num_col-1)
@@ -493,7 +499,7 @@ Matrix & Matrix::ones()
 
 ///////////////////////////////////////////////////////////////////////////////
 //Inequality relational operator, returns true or false 
-//Returns true if elements differ by more than EPS
+//Returns true if elements differ by more than eps
 //Example: if(AMAT!=BMAT){...};
 ///////////////////////////////////////////////////////////////////////////////
 bool Matrix::operator!=(const Matrix &B)
@@ -506,10 +512,10 @@ bool Matrix::operator!=(const Matrix &B)
 			return true;
 
 	for (int i=0;i<num_elem;i++){
-			//check to see if values differ by more or less than EPS
-			if ((*(pbody+i)-(*(B.pbody+i)))>EPS)
+			//check to see if values differ by more or less than eps
+			if ((*(pbody+i)-(*(B.pbody+i)))>eps)
 				return true;
-			else if ((*(pbody+i)-(*(B.pbody+i)))<(-1.*EPS))
+			else if ((*(pbody+i)-(*(B.pbody+i)))<(-1.*eps))
 				return true;
 		}
 	return false;
@@ -741,7 +747,7 @@ Matrix & Matrix::operator=(const Matrix &B)
 }
 ///////////////////////////////////////////////////////////////////////////////
 //Equality relational operator
-//returns true if elements differ by less than EPS
+//returns true if elements differ by less than eps
 //Example: if(AMAT==BMAT){...};
 ///////////////////////////////////////////////////////////////////////////////
 bool Matrix::operator==(const Matrix &B)
@@ -754,10 +760,10 @@ bool Matrix::operator==(const Matrix &B)
 			return false;
 
 	for (int i=0;i<num_elem;i++){
-			//check to see if values differ by more or less than EPS
-			if ((*(pbody+i)-(*(B.pbody+i)))>EPS)
+			//check to see if values differ by more or less than eps
+			if ((*(pbody+i)-(*(B.pbody+i)))>eps)
 				return false;
-			else if ((*(pbody+i)-(*(B.pbody+i)))<(-1.*EPS))
+			else if ((*(pbody+i)-(*(B.pbody+i)))<(-1.*eps))
 				return false;
 		}
 	return true;
@@ -847,8 +853,8 @@ Matrix Matrix::pol_from_cart()
 	if(denom>0.)
 		elevation=atan2(-v3,denom);
 	else{
-		if(v3>0) elevation=-PI/2.;
-		if(v3<0) elevation=PI/2.;
+		if(v3>0) elevation=-pi/2.;
+		if(v3<0) elevation=pi/2.;
 		if(v3==0) elevation=0.;
 	}
 	
@@ -1127,7 +1133,7 @@ Matrix cadtei(double simulation_time)
 	double cxi(0);
     Matrix TEI(3,3);
 
-    xi=WEII3*simulation_time;
+    xi=earth_angular_rotation*simulation_time;
 	sxi=sin(xi);
 	cxi=cos(xi);
     
@@ -1162,7 +1168,7 @@ Matrix cadsph(Matrix SBIE)
 	lat=asin((z)/dbi);
 
 	//Altitude 
-	alt=dbi-REARTH;
+	alt=dbi-earth_mean_radius;
 
 	//Longitude
 	dum4=asin(y/sqrt(x*x+y*y));
@@ -1174,20 +1180,20 @@ Matrix cadsph(Matrix SBIE)
 	}
 	if((x<0)&&(y>=0))
 	{
-		alamda=180*RAD-dum4;   //quadrant II
+		alamda=180*rad-dum4;   //quadrant II
 	}
 	if((x<0)&&(y<0))
 	{
-		alamda=180*RAD-dum4;  //quadrant III
+		alamda=180*rad-dum4;  //quadrant III
 	}
 	if((x>=0)&&(y<0))
 	{
-		alamda=360*RAD+dum4;  //quadrant IV
+		alamda=360*rad+dum4;  //quadrant IV
 	}
 	lon=alamda;
-	if(lon>180*RAD)
+	if(lon>180*rad)
 	{
-		lon= -(360*RAD-lon);  //east positive, west negative
+		lon= -(360*rad-lon);  //east positive, west negative
 	}
 	RESULT.assign_loc(0,0,lon);
 	RESULT.assign_loc(1,0,lat);
@@ -1233,8 +1239,8 @@ Matrix cadine(double lon,double lat,double alt,double time)
 {
 	Matrix VEC(3,1);
 
-	double rad=alt+REARTH;
-	double cel_lon=lon+WEII3*time;
+	double rad=alt+earth_mean_radius;
+	double cel_lon=lon+earth_angular_rotation*time;
 	double clat=cos(lat);
 	double slat=sin(lat);
 	double clon=cos(cel_lon);
@@ -1273,7 +1279,7 @@ double angle(Matrix VEC1,Matrix VEC2)
 	double abs2=VEC2.absolute();
 
 	double dum=abs1*abs2;
-	if(abs1*abs2>EPS)
+	if(abs1*abs2>eps)
 		argument=scalar/dum;
 	else
 		argument=1.;
