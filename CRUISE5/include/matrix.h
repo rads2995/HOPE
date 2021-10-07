@@ -20,7 +20,7 @@ public:
 	// Default constructors
 	Matrix();
 	// Overloaded constructor
-	Matrix(int row_size,int col_size);
+	Matrix(int num_row,int num_col);
 	// Copy constructor
 	Matrix(const Matrix& MAT);
 	// Deconstructor
