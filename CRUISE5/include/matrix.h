@@ -1,5 +1,5 @@
-#ifndef LIBRARY_MATRIX_H
-#define LIBRARY_MATRIX_H
+#ifndef MATRIX_H
+#define MATRIX_H
 
 #include "constants.h"
 
@@ -14,7 +14,7 @@ private:
 	// Total number of elements
 	int num_elem;
 	// Pointer to array
-	double *pbody;
+	double *pbody {nullptr};
 
 public:
 	// Default constructors
@@ -226,4 +226,4 @@ int sign(const double &variable);
 //Returns the angle between two 3x1 vectors
 double angle(Matrix VEC1,Matrix VEC2);
 
-#endif // LIBRARY_MATRIX_H
+#endif // MATRIX_H

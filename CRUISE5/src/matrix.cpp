@@ -12,12 +12,9 @@ using namespace constants;
 Matrix::Matrix(){}
 
 // Overloaded constructor
-Matrix::Matrix(int num_row,int num_col) {
-	
+Matrix::Matrix(int num_row, int num_col) {
     this->num_row = num_row;
 	this->num_col = num_col;
-
-	pbody = nullptr;
 
 	// Memory allocation
 	this->num_elem = num_row * num_col;
@@ -92,13 +89,11 @@ Matrix Matrix::adjoint() {
 	
     if(!(num_row == num_col)) {
         std::cerr << " *** Error: matrix not square 'Matrix::adjoint()' *** \n";
-        system("pause");
         exit(1);
     }
 	
     if((num_row == 1) && (num_col == 1)) {
         std::cerr << " *** Error: only one element 'Matrix::adjoint()' *** \n";
-        system("pause");
         exit(1);
     }
 
@@ -121,90 +116,89 @@ Matrix Matrix::adjoint() {
 	return RESULT.trans();
 }
 
-//Assigns a value to a matrix element (offset!)
-void Matrix::assign_loc(const int &r, const int &c, const double &val)
-{
-	if(r>num_row-1||c>num_col-1)
-	{cerr<<" *** Error: location outside array 'Matrix::assign_loc()' *** \n";system("pause");exit(1);}
+// Assigns a value to a matrix element (offset!)
+void Matrix::assign_loc(const int& r, const int& c, const double& val) {
+	
+    if(r > num_row - 1 || c > num_col - 1) {
+        
+        cerr<<" *** Error: location outside array 'Matrix::assign_loc()' *** \n";
+        exit(1);
+    }
 
-	//assigning value
-	int offset=num_col*(r)+c;
-	*(pbody+offset)=val;	
+	// Assigning value
+	int offset = num_col * (r) + c;
+	*(pbody + offset) = val;	
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //Builds a 3x1 vector from three parameters
-//Example: VEC.build_vec3(v1,v2,v3);
-///////////////////////////////////////////////////////////////////////////////
-Matrix & Matrix::build_vec3(const double &v1,const double &v2,const double &v3)
-{
-	num_row=3;
-	num_col=1;
-	*pbody=v1;
-	*(pbody+1)=v2;
-	*(pbody+2)=v3;
+Matrix& Matrix::build_vec3(const double& v1,const double& v2,const double& v3) {
+	
+    num_row = 3;
+	num_col = 1;
+	*pbody = v1;
+	*(pbody + 1) = v2;
+	*(pbody + 2) = v3;
 
 	return *this;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Builds a 3x3 matrix from nine paramters arranged in rows
-//Example: MAT.build_mat33(v11,v12,v13,v21,v22,v23,v31,v32,v33);
-///////////////////////////////////////////////////////////////////////////////
-Matrix & Matrix::build_mat33(const double &v11,const double &v12,const double &v13
-						 ,const double &v21,const double &v22,const double &v23
-					     ,const double &v31,const double &v32,const double &v33)
-{
-	num_row=3;
-	num_col=3;
-	*pbody=v11;    *(pbody+1)=v12;*(pbody+2)=v13;
-	*(pbody+3)=v21;*(pbody+4)=v22;*(pbody+5)=v23;
-	*(pbody+6)=v31;*(pbody+7)=v32;*(pbody+8)=v33;
+// Build a 3x3 matrix from nine paramters arranged in rows
+Matrix& Matrix::build_mat33(const double& v11, const double& v12, const double& v13, 
+                            const double& v21, const double& v22, const double& v23,
+                            const double& v31,const double& v32,const double& v33) {
+	
+    num_row = 3;
+	num_col = 3;
+	*pbody = v11;    
+    *(pbody + 1) = v12;
+    *(pbody + 2) = v13;
+	*(pbody + 3) = v21;
+    *(pbody + 4) = v22;
+    *(pbody + 5) = v23;
+	*(pbody + 6) = v31;
+    *(pbody + 7) = v32;
+    *(pbody + 8) = v33;
 
 	return *this;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Calculates Cartesian from polar coordinates
+// Calculates Cartesian from polar coordinates
 //|V1|             | cos(elevation)*cos(azimuth)|
 //|V2| = magnitude*|cos(elevation)*sin(azimuth) |
 //|V3|		       |	  -sin(elevation)       |
-//
-//Example: VEC.cart_from_pol(magnitude,azimuth,elevation); 	
-///////////////////////////////////////////////////////////////////////////////
-Matrix & Matrix::cart_from_pol(const double &magnitude,const double &azimuth
-						   ,const double &elevation)
-{
-	*pbody=magnitude*(cos(elevation)*cos(azimuth));
-	*(pbody+1)=magnitude*(cos(elevation)*sin(azimuth));
-	*(pbody+2)=magnitude*(sin(elevation)*(-1.0));
+Matrix& Matrix::cart_from_pol(const double& magnitude,
+                            const double& azimuth,
+                            const double& elevation) {
+	
+    *pbody = magnitude * (cos(elevation) * cos(azimuth));
+	*(pbody + 1) = magnitude * (cos(elevation) * sin(azimuth));
+	*(pbody + 2) = magnitude * (sin(elevation) * (-1.0));
 
 	return *this;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Returns column vector of column # 
-//Example: VEC = MAT.col_vec(2); (2nd column!)
-///////////////////////////////////////////////////////////////////////////////
-Matrix Matrix::col_vec(const int &col)
-{
-	if(col<=0||col>num_col)
-	{cerr<<" *** Error: column outside array 'Matrix::col_vec()' *** \n";system("pause");exit(1);}
+// Returns column vector of column # 
+Matrix Matrix::col_vec(const int &col) {
 	
-	Matrix RESULT(num_row,1);
+    if(col <= 0 || col > num_col) {
+        
+        cerr<<" *** Error: column outside array 'Matrix::col_vec()' *** \n";
+        system("pause");
+        exit(1);
+    }
+	
+	Matrix RESULT(num_row, 1);
 
-	for(int i=0;i<num_row;i++){
-		int offset=i*num_col+col-1;
-		*(RESULT.pbody+i)=(*(pbody+offset));
+	for(int i = 0; i < num_row; i++) {
+		
+        int offset = i * num_col + col - 1;
+		*(RESULT.pbody + i) = (*(pbody + offset));
 	}
 	return RESULT;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-//Returns the determinant		
-//Determinant recursive procedure
-//Example: det = MAT.determinant();
-///////////////////////////////////////////////////////////////////////////////
+// Returns the determinant		
+// Determinant recursive procedure
 double Matrix::determinant()
 {
 	if(!(num_row==num_col))
@@ -240,10 +234,8 @@ double Matrix::determinant()
 	return result;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //Returns nxn diagonal matrix  from nx1 vector 
 //Example: DIAMAT=VEC.diamat_vec()
-///////////////////////////////////////////////////////////////////////////////
 Matrix Matrix::diamat_vec()
 {
 	if(num_col!=1)
@@ -257,10 +249,8 @@ Matrix Matrix::diamat_vec()
 	return RESULT;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //Returns nx1 diagonal vector from nxn matrix
 //Example: VEC=MAT.diavec_mat();
-///////////////////////////////////////////////////////////////////////////////
 Matrix Matrix::diavec_mat()
 {
 	if(!(num_row==num_col))
@@ -274,11 +264,8 @@ Matrix Matrix::diavec_mat()
 	return RESULT;
 }
 
-///////////////////////////////////////////////////////////////////////////////
 //Dimensions a matrix of size row x col
 //Only used to initialize arrays in class 'Variable'
-//Example: MAT.dimension(3,3);
-///////////////////////////////////////////////////////////////////////////////
 void Matrix::dimension(int row,int col)
 {
 	num_row=row;

@@ -1,6 +1,6 @@
 // constants.h: Header file containing constant parameters.
-#ifndef LIBRARY_CONSTANTS_H
-#define LIBRARY_CONSTANTS_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 namespace constants {
     inline constexpr double earth_mean_radius { 6371008.7714 };     // Mean earth radius [m]
@@ -29,5 +29,5 @@ namespace constants {
     inline constexpr int NSATELLITE { 20 };				            // Size of "satellite" module-variable array
     inline constexpr int NEVENT { 25 };					            // Max number of events
     inline constexpr int NVAR { 15 };						        // Max number of variables to be input at every event 
-}
-#endif // LIBRARY_CONSTANTS_H
+} // namespace constants
+#endif // CONSTANTS_H
