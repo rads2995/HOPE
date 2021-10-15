@@ -22,6 +22,7 @@ public:
     void print();
     void scalar_multiplication(T scalar);
     void populate_matrix();
+    void matrix_multiplication(Matrix<T>& matrix_A, Matrix<T>& matrix_B);
 };
 
 // Default constructor
@@ -88,6 +89,27 @@ void Matrix<T>::scalar_multiplication(T scalar) {
         }
     }
     ptr_matrix = ptr_copy;
+}
+
+template <typename T>
+void Matrix<T>::matrix_multiplication(Matrix<T>& matrix_A, Matrix<T>& matrix_B) {
+    
+    auto ptr_copy = this->ptr_matrix;
+    auto ptr_copy_matrix_A = matrix_A.get_ptr_matrix();
+    auto ptr_copy_matrix_B = matrix_B.get_ptr_matrix();
+    int j{};
+
+    for (size_t i = 0; i < num_rows; i++) {
+
+        *(ptr_matrix + i) = (*(matrix_A.get_ptr_matrix()) + j) * (*(matrix_B.get_ptr_matrix()))
+                          + (*(matrix_A.get_ptr_matrix()) + j + 1) * (*(matrix_B.get_ptr_matrix() + 1))
+                          + (*(matrix_A.get_ptr_matrix()) + j + 2) * (*(matrix_B.get_ptr_matrix() + 2));
+        j += 3;
+    }
+
+    this->ptr_matrix = ptr_copy;
+    matrix_A.set_ptr_matrix(ptr_copy_matrix_A);
+    matrix_B.set_ptr_matrix(ptr_copy_matrix_B);
 }
 
 // Populate components of matrix
