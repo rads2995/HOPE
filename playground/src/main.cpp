@@ -1,9 +1,11 @@
-#include <iostream>
 #include "matrix.hpp"
 
 int main() {
 
-    PrintMatrix();
-    std::cout << "Hello World!" << std::endl;
+    Matrix <double> matrix(3, 3);
+    matrix.print();
+
+    std::cout << "Works until this point!" << std::endl;
+
     return 0;
 }
