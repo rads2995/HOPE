@@ -8,5 +8,5 @@ x = data[:,1]
 y = data[:,2]
 z = data[:,3]
 
-plt.plot(x, z, 'r--')
+plt.plot(x, z, 'r-')
 plt.savefig("output.png")

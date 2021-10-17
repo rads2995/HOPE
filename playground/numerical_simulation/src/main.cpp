@@ -1,8 +1,8 @@
-#include "simulate_system.hpp"
+#include "simulate_system.h"
 
 int main() {
     
-    std::array <double, 3> x = {10.0, 1.0, 1.0};
-    boost::numeric::odeint::integrate (lorenz, x, 0.0, 25.0, 0.1, write_lorenz);
+    std::array <double, 3> x0 = {10.0, 1.0, 1.0};
+    boost::numeric::odeint::integrate (equation, x0, 0.0, 50.0, 0.01, output);
     return 0;
 }
