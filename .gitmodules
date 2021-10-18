@@ -1,0 +1,3 @@
+[submodule "playground/simulations/include/Eigen"]
+	path = playground/simulations/include/Eigen
+	url = https://gitlab.com/libeigen/eigen.git
