@@ -2,7 +2,7 @@
 
 int main() {
     
-    state_type x = {10, 0.5}; 
-    boost::numeric::odeint::integrate (ode_function, x, 0.0, 50.0, 0.01, write_states);
+    state_type x = {1, 2};
+    boost::numeric::odeint::integrate (ode_function, x, 0.0, 10.0, 0.01, write_states);
     return 0;
 }

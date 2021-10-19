@@ -2,13 +2,10 @@
 
 std::ofstream data("simulation.txt");
 
-double g = 9.81;
-double L = 5;
-
 void ode_function (const state_type &x, state_type &dxdt, double t) {
-
-    dxdt[0] = x[1];
-    dxdt[1] = -(g/L)*x[0];
+    
+    dxdt[0] = x[0];
+    dxdt[1] = -2 * x[1];
 }
 
 void write_states (const state_type &x, const double t) {

@@ -1,8 +1,8 @@
 #ifndef SIMULATE_SYSTEM_H_
 #define SIMULATE_SYSTEM_H_
 
-#include <iostream>
 #include <fstream>
+#include <array>
 
 #include <boost/numeric/odeint.hpp>
 
