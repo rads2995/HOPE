@@ -1,6 +1,6 @@
 # HOPE: Highly Operational Programming Enviroment
 
-Modeling and simulation of various systems' dynamics.
+Modeling and simulation for various dynamical systems.
 
 ### Libraries
 - Boost
