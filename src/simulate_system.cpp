@@ -4,8 +4,7 @@ std::ofstream data("simulation.txt");
 
 void ode_function (const state_type &x, state_type &dxdt, double t) {
     
-    dxdt[0] = x[0];
-    dxdt[1] = -2 * x[1];
+    dxdt[0] = x[0]*x[0];
 }
 
 void write_states (const state_type &x, const double t) {

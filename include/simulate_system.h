@@ -1,15 +1,16 @@
-#ifndef SIMULATE_SYSTEM_H_
-#define SIMULATE_SYSTEM_H_
+#ifndef HOPE_SIMULATE_SYSTEM_H
+#define HOPE_SIMULATE_SYSTEM_H
 
 #include <fstream>
-#include <array>
+#include <vector>
 
+#include <Eigen/Core>
 #include <boost/numeric/odeint.hpp>
 
-typedef std::array<double, 2> state_type;
+typedef std::vector<double> state_type;
 
 void ode_function (const state_type &x, state_type &dxdt, double t);
 
 void write_states (const state_type &x, const double t);
 
-#endif // SIMULATE_SYSTEM_H_
+#endif // SIMULATE_SYSTEM_H
