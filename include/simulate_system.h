@@ -2,13 +2,10 @@
 #define SIMULATE_SYSTEM_H
 
 #include <fstream>
-#include <vector>
-
 #include <Eigen/Core>
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
-#include <boost/numeric/odeint.hpp>
 
-typedef std::vector<double> state_type;
+typedef Eigen::Matrix<double, 3, 1> state_type;
 
 void ode_function (const state_type &x, state_type &dxdt, double t);
 
