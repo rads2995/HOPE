@@ -1,10 +1,11 @@
-#ifndef HOPE_SIMULATE_SYSTEM_H
-#define HOPE_SIMULATE_SYSTEM_H
+#ifndef SIMULATE_SYSTEM_H
+#define SIMULATE_SYSTEM_H
 
 #include <fstream>
 #include <vector>
 
 #include <Eigen/Core>
+#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint.hpp>
 
 typedef std::vector<double> state_type;

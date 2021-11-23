@@ -1,8 +1,8 @@
 # Define minimum required version for CMake
-cmake_minimum_required(VERSION 3.21)
+cmake_minimum_required(VERSION 3.22)
 
 # Details of the project
-project(Simulate VERSION 1.0
+project(HOPE VERSION 1.0
         DESCRIPTION "Simulation of Dynamical Systems"
         LANGUAGES CXX)
 
