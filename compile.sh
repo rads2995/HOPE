@@ -11,7 +11,7 @@ cd build
 echo "Compiling project using generated Makefile..."
 make
 echo "Running executable..."
-#./HOPE
+./HOPE
 echo "Copying results from simulation into Python directory..."
 #cp simulation_result.txt ../python/
 echo "Switching to Python directory"
