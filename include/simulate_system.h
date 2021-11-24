@@ -4,6 +4,7 @@
 #include <iostream>
 #include <fstream>
 
+// Eigen (matrix operations) library and Boost (numerical solver) library
 #include <Eigen/Core>
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint/integrate/integrate_const.hpp>
@@ -24,11 +25,9 @@ public:
     // Default destructor 
     ~SimulateSystem();
     
-    // Function describing the state-space system
-    void ode_function (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, Eigen::Matrix<double, Eigen::Dynamic, 1> &dxdt, double t);
-    
-    // Function to write the resultant states
-    void write_states (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, const double t);
+    // Getters and Setters
+    Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> getA();
+    Eigen::Matrix<double, Eigen::Dynamic, 1> getx0();
 };
 
 #endif // SIMULATE_SYSTEM_H

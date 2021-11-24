@@ -1,8 +1,5 @@
 #include "simulate_system.h"
 
-// Write results from simulation as columns on text file 
-std::ofstream data("simulation_result.txt");
-
 // Default constructor
 SimulateSystem::SimulateSystem() {}
 
@@ -16,19 +13,6 @@ SimulateSystem::SimulateSystem(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dyna
 // Default destructor
 SimulateSystem::~SimulateSystem() {}
 
-// Construct the equations of motion in state-space form for N-states
-void SimulateSystem::ode_function (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, Eigen::Matrix<double, Eigen::Dynamic, 1> &dxdt, double t)
-{   
-    dxdt = A * x;
-}
-
-// Write the quations of motion states into the text file
-void SimulateSystem::write_states (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, const double t)
-{
-    data << t << '\t';
-    
-    for (size_t i = 0; i < 2; i++)
-        data << x[i] << '\t';
-    
-    data << std::endl; 
-}
+// Getters and Setters
+Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::getA() {return this->A;}
+Eigen::Matrix<double, Eigen::Dynamic, 1> SimulateSystem::getx0() {return this->x0;}
