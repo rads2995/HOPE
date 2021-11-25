@@ -15,11 +15,11 @@
 class SimulateSystem 
 {
 private:
-    // Define dynamic state matrices and vectors
-    Eigen::Matrix<double, size, size> A;
-    Eigen::Matrix<double, size, size> B;
-    Eigen::Matrix<double, size, 1> x0;
-    Eigen::Matrix<double, size, 1> u;
+    // Define N-size state matrices and vectors
+    Eigen::Matrix<PRECISION, size, size> A;
+    Eigen::Matrix<PRECISION, size, size> B;
+    Eigen::Matrix<PRECISION, size, 1> x0;
+    Eigen::Matrix<PRECISION, size, 1> u;
 
 public:
     // Default constructor
@@ -29,8 +29,8 @@ public:
     ~SimulateSystem();
 
     // Getters and Setters
-    Eigen::Matrix<double, size, size> getA();
-    Eigen::Matrix<double, size, 1> getx0();
+    Eigen::Matrix<PRECISION, size, size> getA();
+    Eigen::Matrix<PRECISION, size, 1> getx0();
 };
 
 #endif // SIMULATE_SYSTEM_H

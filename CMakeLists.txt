@@ -3,11 +3,11 @@ cmake_minimum_required(VERSION 3.22)
 
 # Details of the project
 project(HOPE VERSION 1.0
-        DESCRIPTION "Numerical Simulation of Dynamical Systems"
+        DESCRIPTION "Numerical Simulation for Dynamical Systems"
         LANGUAGES CXX)
 
 # Specify the C++ standard
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Set binary to output at build directory

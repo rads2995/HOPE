@@ -14,6 +14,8 @@ echo "Running executable..."
 ./HOPE
 echo "Copying results from simulation into Python directory..."
 cp simulation_result.txt ../python/
+
+# Optional bash commands to be used with Python
 echo "Switching to Python directory"
 cd ../python/
 echo "Running python script"
