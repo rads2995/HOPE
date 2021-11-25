@@ -1,13 +1,22 @@
+#include "constants.h"
 #include "simulate_system.h"
 
 // Default constructor
-SimulateSystem::SimulateSystem() {}
-
-// Overloaded constructor
-SimulateSystem::SimulateSystem(Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> A, Eigen::Matrix<double, Eigen::Dynamic, 1> x0)
+SimulateSystem::SimulateSystem() 
 {
-    this->A = A; 
-    this->x0 = x0;
+    // Generate components for state matrix [A]
+    std::array<std::array<double, SIZE>, SIZE> temp = {{{0, 1}, {-5, 0}}};
+    /*
+    for(size_t i = 0; i < SIZE; i++)
+        for(size_t j = 0; j < SIZE; j++)
+            this->A(i,j) = temp[i][j];
+    */
+    // Generate components for state vector {x}
+    std::array<double, SIZE> temp_vector = {0.1, 0.2};
+    /*
+    for(size_t i = 0; i < SIZE; i++)
+        this->x0(i) = temp_vector[i];
+    */
 }
 
 // Default destructor
