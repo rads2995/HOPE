@@ -1,13 +1,21 @@
 # HOPE: Highly Operational Programming Enviroment
 
-Modeling and simulation for various dynamical systems.
+Numerical simulation of dynamical systems.
+
+Various parameters can be changed in the include/constants.h header file
 
 ### Libraries
-- Boost
-- Eigen
+- Boost (odeint)
+- Eigen (Core)
 
 ### Requirements
-- CMake
+- CMake (build)
+
+### Project Structure
+- include/  (header files)
+- lib/      (external libraries)
+- python/   (python scripts)
+- src/      (source code files)
 
 ### To-Do
 - Implementation of Monte-Carlo Simulation for dynamical system

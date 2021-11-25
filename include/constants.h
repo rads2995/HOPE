@@ -7,7 +7,7 @@
 // Define constant parameters (edit this before running)
 constexpr unsigned int size = 2;        // number of states
 constexpr PRECISION t0 = 0;             // initial time (s)
-constexpr PRECISION tf = 10;            // final time (s)
+constexpr PRECISION tf = 50;            // final time (s)
 constexpr PRECISION step_size = 0.01;   // step size (s)
 
 #endif // CONSTANTS_H
