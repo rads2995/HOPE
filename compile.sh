@@ -13,10 +13,10 @@ make
 echo "Running executable..."
 ./HOPE
 echo "Copying results from simulation into Python directory..."
-#cp simulation_result.txt ../python/
+cp simulation_result.txt ../python/
 echo "Switching to Python directory"
 cd ../python/
 echo "Running python script"
-#python plot.py
+python plot.py
 echo "Plot of resulting simulation has been generated..."
 echo "Simulation completed!"
