@@ -1,3 +1,6 @@
+// simulate_system.h: source file for 
+// the SimulateSystem class containing
+// the state matrices and vectors 
 #include "constants.h"
 #include "simulate_system.h"
 

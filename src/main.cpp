@@ -1,5 +1,13 @@
+// main.cpp: source file containing main function and
+// numerical integrator with stepper function
 #include "constants.h"
 #include "simulate_system.h"
+
+#include <fstream>
+
+// Ordinary differential equations numerical solvers
+#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
+#include <boost/numeric/odeint/integrate/integrate_const.hpp>
 
 // Write results from simulation as columns on text file 
 std::ofstream data("simulation_result.txt");
@@ -11,6 +19,7 @@ Eigen::Matrix<PRECISION, size, 1> x0;
 Eigen::Matrix<PRECISION, size, 1> u;
 
 // Construct the equations of motion in state-space form
+// {dxdt} = [A]*{x} + [B]*{u}
 void state_function (const Eigen::Matrix<PRECISION, size, 1> &x, Eigen::Matrix<PRECISION, size, 1> &dxdt, PRECISION t)
 {   
     dxdt = A * x;

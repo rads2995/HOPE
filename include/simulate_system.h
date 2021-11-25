@@ -1,16 +1,15 @@
+// simulate_system.h: header file for 
+// the SimulateSystem class containing
+// the state matrices and vectors 
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
 #include "constants.h"
 
-#include <fstream>
+#include <iostream>
 
-// Dynamic matrix sizing and operations
+// Dynamic matrix sizing and matrix operations
 #include <Eigen/Core>
-
-// Ordinary differential equations numerical solvers
-#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
-#include <boost/numeric/odeint/integrate/integrate_const.hpp>
 
 class SimulateSystem 
 {
