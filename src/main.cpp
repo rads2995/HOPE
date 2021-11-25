@@ -11,7 +11,7 @@ Eigen::Matrix<PRECISION, size, 1> x0;
 Eigen::Matrix<PRECISION, size, 1> u;
 
 // Construct the equations of motion in state-space form
-void ode_function (const Eigen::Matrix<PRECISION, size, 1> &x, Eigen::Matrix<PRECISION, size, 1> &dxdt, PRECISION t)
+void state_function (const Eigen::Matrix<PRECISION, size, 1> &x, Eigen::Matrix<PRECISION, size, 1> &dxdt, PRECISION t)
 {   
     dxdt = A * x;
 }
@@ -47,7 +47,7 @@ int main()
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, size, 1>, PRECISION, Eigen::Matrix<PRECISION, size, 1>, PRECISION, vector_space_algebra> stepper;
     
     // Call numerical integrator function from Boost library
-    integrate_const(stepper, ode_function, x0, t0, tf, step_size, write_states);
+    integrate_const(stepper, state_function, x0, t0, tf, step_size, write_states);
 
     return (0);
 }

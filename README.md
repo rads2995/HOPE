@@ -2,7 +2,7 @@
 
 Numerical simulation of dynamical systems.
 
-Various parameters can be changed in the include/constants.h header file
+Various parameters can be changed in the include/constants.h header file.
 
 ### Libraries
 - Boost (odeint)
@@ -14,11 +14,11 @@ Various parameters can be changed in the include/constants.h header file
 ### Project Structure
 - include/  (header files)
 - lib/      (external libraries)
-- python/   (python scripts)
+- python/   (python scripts, requires Numpy and Matplotlib)
 - src/      (source code files)
 
 ### To-Do
-- Implementation of Monte-Carlo Simulation for dynamical system
+- Cleanup and polish 
 
 ### Questions
 Email me at: Rads2995@gmail.com

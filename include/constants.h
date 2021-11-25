@@ -4,7 +4,7 @@
 // Set precision for the simulation (float, double, etc...)
 #define PRECISION double
 
-// Define constant parameters (edit this before running)
+// Define constant parameters for simulation
 constexpr unsigned int size = 2;        // number of states
 constexpr PRECISION t0 = 0;             // initial time (s)
 constexpr PRECISION tf = 50;            // final time (s)
