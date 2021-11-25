@@ -43,10 +43,10 @@ int main()
     A = system.SimulateSystem::getA();
     x0 = system.SimulateSystem::getx0();
     
-    // Call stepper function from Boost library
+    // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, size, 1>, PRECISION, Eigen::Matrix<PRECISION, size, 1>, PRECISION, vector_space_algebra> stepper;
     
-    // Call numerical integrator function from Boost library
+    // Call integrator function (equidistant integration)
     integrate_const(stepper, state_function, x0, t0, tf, step_size, write_states);
 
     return (0);
