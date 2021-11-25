@@ -1,10 +1,12 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-// Define simulation parameters (edit this!)
-constexpr unsigned int SIZE = 2;        // number of states
-constexpr double t0 = 0;                // initial time
-constexpr double tf = 10;               // final time
-constexpr double step_size = 0.01;      // step size
+//TODO: implement precision constant
+
+// Define simulation parameters (edit this before running)
+constexpr unsigned int size = 2;    // number of states
+constexpr double t0 = 0;            // initial time (s)
+constexpr double tf = 10;           // final time (s)
+constexpr double step_size = 0.01;  // step size (s)
 
 #endif // CONSTANTS_H

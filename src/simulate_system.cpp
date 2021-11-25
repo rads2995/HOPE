@@ -5,16 +5,23 @@
 SimulateSystem::SimulateSystem() 
 {
     // Generate components for state matrix [A]
-    std::array<std::array<double, SIZE>, SIZE> temp = {{{0, 1}, {-5, 0}}};
+    //std::array<std::array<double, size>, size> temp = {{{0, 1}, {-5, 0}}};
+    //this->A = temp;
+    
+    this->A << 1, 2, 3, 4;
+    
     /*
-    for(size_t i = 0; i < SIZE; i++)
-        for(size_t j = 0; j < SIZE; j++)
+    for(size_t i = 0; i < size; i++)
+        for(size_t j = 0; j < size; j++)
             this->A(i,j) = temp[i][j];
     */
     // Generate components for state vector {x}
-    std::array<double, SIZE> temp_vector = {0.1, 0.2};
+    //std::array<double, size> temp_vector = {0.1, 0.2};
+    
+    this->x0 << 1, 2;
+    
     /*
-    for(size_t i = 0; i < SIZE; i++)
+    for(size_t i = 0; i < size; i++)
         this->x0(i) = temp_vector[i];
     */
 }
@@ -23,5 +30,5 @@ SimulateSystem::SimulateSystem()
 SimulateSystem::~SimulateSystem() {}
 
 // Getters and Setters
-Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::getA() {return this->A;}
-Eigen::Matrix<double, Eigen::Dynamic, 1> SimulateSystem::getx0() {return this->x0;}
+Eigen::Matrix<double, size, size> SimulateSystem::getA() {return this->A;}
+Eigen::Matrix<double, size, 1> SimulateSystem::getx0() {return this->x0;}

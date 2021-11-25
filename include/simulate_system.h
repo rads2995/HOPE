@@ -1,6 +1,8 @@
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
+#include "constants.h"
+
 #include <fstream>
 
 // Dynamic matrix sizing and operations
@@ -14,10 +16,10 @@ class SimulateSystem
 {
 private:
     // Define dynamic state matrices and vectors
-    Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> A;
-    Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> B;
-    Eigen::Matrix<double, Eigen::Dynamic, 1> x0;
-    Eigen::Matrix<double, Eigen::Dynamic, 1> u;
+    Eigen::Matrix<double, size, size> A;
+    Eigen::Matrix<double, size, size> B;
+    Eigen::Matrix<double, size, 1> x0;
+    Eigen::Matrix<double, size, 1> u;
 
 public:
     // Default constructor
@@ -27,8 +29,8 @@ public:
     ~SimulateSystem();
 
     // Getters and Setters
-    Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> getA();
-    Eigen::Matrix<double, Eigen::Dynamic, 1> getx0();
+    Eigen::Matrix<double, size, size> getA();
+    Eigen::Matrix<double, size, 1> getx0();
 };
 
 #endif // SIMULATE_SYSTEM_H
