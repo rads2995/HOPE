@@ -7,6 +7,7 @@
 #include "constants.h"
 
 #include <iostream>
+#include <fstream>
 
 // Dynamic matrix sizing and matrix operations
 #include <Eigen/Core>

@@ -3,8 +3,6 @@
 #include "constants.h"
 #include "simulate_system.h"
 
-#include <fstream>
-
 // Ordinary differential equations numerical solvers
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint/integrate/integrate_const.hpp>
