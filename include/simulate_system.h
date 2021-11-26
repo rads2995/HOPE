@@ -29,7 +29,9 @@ public:
 
     // Getters and Setters
     Eigen::Matrix<PRECISION, size, size> getA();
+    Eigen::Matrix<PRECISION, size, size> getB();
     Eigen::Matrix<PRECISION, size, 1> getx0();
+    Eigen::Matrix<PRECISION, size, 1> getu();
 };
 
 #endif // SIMULATE_SYSTEM_H

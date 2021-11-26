@@ -21,4 +21,6 @@ cd ../python/
 echo "Running python script"
 python plot.py
 echo "Plot of resulting simulation has been generated..."
+echo "Opening resulting plot of simulation"
+feh output.png
 echo "Simulation completed!"

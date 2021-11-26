@@ -22,7 +22,7 @@ Eigen::Matrix<PRECISION, size, 1> u;
 // {dxdt} = [A]*{x} + [B]*{u}
 void state_function (const Eigen::Matrix<PRECISION, size, 1> &x, Eigen::Matrix<PRECISION, size, 1> &dxdt, PRECISION t)
 {   
-    dxdt = A * x;
+    dxdt = A * x + B * u;
 }
 
 // Write the quations of motion states into the text file
@@ -50,7 +50,9 @@ int main()
     
     // Copy object matrices to global matrices
     A = system.SimulateSystem::getA();
+    B = system.SimulateSystem::getB();
     x0 = system.SimulateSystem::getx0();
+    u = system.SimulateSystem::getu();
     
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, size, 1>, PRECISION, Eigen::Matrix<PRECISION, size, 1>, PRECISION, vector_space_algebra> stepper;
