@@ -29,6 +29,7 @@ Various parameters can be modified in the src/main.cpp source file.
 - Read system's matrices and vectors from text file
 - User can modify components of state matrices and vectors at runtime
 - System's matrices and vectors can be resized at runtime
+- Write documentation explaining how to use the program
 
 ### Known Limitations
 - Number of states must be known at compile-time (currently working on this)
