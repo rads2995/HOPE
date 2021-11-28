@@ -17,6 +17,5 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR})
 add_subdirectory(src)
 
 # Copy matrices and vectors from data directory into binary directory
-file(COPY ${CMAKE_SOURCE_DIR}/data/A.txt 
-          ${CMAKE_SOURCE_DIR}/data/x0.txt
-    DESTINATION ${CMAKE_BINARY_DIR})
+file(COPY ${CMAKE_SOURCE_DIR}/data 
+     DESTINATION ${CMAKE_BINARY_DIR})

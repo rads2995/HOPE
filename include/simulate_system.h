@@ -5,6 +5,9 @@
 // Set precision for the simulation (float, double, etc)
 #define PRECISION double
 
+// TEST: output to console
+#include <iostream>
+
 // Read matrices and write system states to file
 #include <fstream>
 
@@ -27,17 +30,8 @@ public:
     // Default constructor
     SimulateSystem();
     
-    // Overloaded constructor with global [A] and {x0}
-    SimulateSystem(matrix_type p_A, vector_type p_x0);
-    
-    // Overloaded constructor with global [A], {x0}, [B] and {u}
-    SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_u);
-
-    // Overloaded constructor with global [A], {x0}, [B], [C] and {u}
-    SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_C, matrix_type p_u);
-
-    // Overloaded constructor with global [A], {x0}, [B], [C], [D], and {u}
-    SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_C, matrix_type p_D, matrix_type p_u);
+    // Overloaded constructor with global [A], [B], [C], [D], {u} and {x0}
+    SimulateSystem(matrix_type p_A, matrix_type p_B, matrix_type p_C, matrix_type p_D, matrix_type p_u, vector_type p_x0);
 
     // Default destructor 
     ~SimulateSystem();
@@ -57,6 +51,9 @@ public:
     void set_m_D(matrix_type p_D);
     void set_m_u(matrix_type p_u);
     void set_m_x0(vector_type p_x0);
+
+    // Read matrices from files
+    void read_matrices();
 };
 
 #endif // SIMULATE_SYSTEM_H

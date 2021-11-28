@@ -2,24 +2,23 @@
 #include "simulate_system.h"
 
 // Read text files containing elements for all matrices
-std::ifstream file_A("A.txt");
-std::ifstream file_x0("x0.txt");
+std::ifstream file_A("data/A.txt");
+std::ifstream file_B("data/B.txt");
+std::ifstream file_C("data/C.txt");
+std::ifstream file_D("data/D.txt");
+std::ifstream file_u("data/u.txt");
+std::ifstream file_x0("data/x0.txt");
 
 // Default constructor
 SimulateSystem::SimulateSystem() {}
 
-// Overloaded constructor with global [A] and {x0}
-SimulateSystem::SimulateSystem(matrix_type p_A, vector_type p_x0)
-{
-    m_A = p_A;
-    m_x0 = p_x0;
-}
-
-// Overload constructor with global [A], [B], {u} and {x0}
-SimulateSystem::SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_u)
+// Overloaded constructor with global [A], [B], [C], [D], {u} and {x0}
+SimulateSystem::SimulateSystem(matrix_type p_A, matrix_type p_B, matrix_type p_C, matrix_type p_D, matrix_type p_u, vector_type p_x0)
 {
     m_A = p_A;
     m_B = p_B;
+    m_C = p_C;
+    m_D = p_D;
     m_u = p_u;
     m_x0 = p_x0;
 }
@@ -43,5 +42,8 @@ void SimulateSystem::set_m_D(matrix_type p_D) {m_D = p_D;}
 void SimulateSystem::set_m_u(matrix_type p_u) {m_u = p_u;}
 void SimulateSystem::set_m_x0(vector_type p_x0) {m_x0 = p_x0;}
 
-// Implement member method to replace all member matrices elements with those
-// from files (A.txt, x0.txt, etc)
+// Read matrices from files 
+void SimulateSystem::read_matrices()
+{
+
+}

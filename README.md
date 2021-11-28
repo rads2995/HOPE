@@ -22,5 +22,8 @@ Various parameters can be modified in the src/main.cpp source file.
 - User can modify components of state matrices and vectors at runtime
 - System's matrices and vectors can be resized at runtime
 
+### Known Limitations
+- The number of states must be known at runtime
+
 ### Questions
 Email me at: Rads2995@gmail.com
