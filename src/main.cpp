@@ -2,6 +2,9 @@
 // numerical integrator with stepper function
 #include "simulate_system.h"
 
+#include <iostream>
+#include <fstream>
+
 // Ordinary differential equations numerical solvers
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint/integrate/integrate_const.hpp>
@@ -13,7 +16,7 @@ std::ofstream data("simulation_result.txt");
 // NOTE: should work with dynamic matrix instead of explicit size
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
 {   
-    dxdt = A * x + B * u;
+    dxdt = A * x; // + B * u;
 }
 
 // Write the quations of motion states into the text file
@@ -37,15 +40,10 @@ int main()
     std::cout << "========================" << std::endl;
     std::cout << "\nNumber of states: " << num_states << std::endl;
     
-    //SimulateSystem system;
+    // SimulateSystem system(A, x0);
     
-    /*
     // Copy object matrices to global matrices
-    A = system.SimulateSystem::getA();
-    B = system.SimulateSystem::getB();
-    x0 = system.SimulateSystem::getx0();
-    u = system.SimulateSystem::getu();
-    */
+    // A = system.SimulateSystem::getA();
 
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;

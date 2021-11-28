@@ -1,9 +1,6 @@
 // simulate_system.h: source file containing the SimulateSystem class implementation
 #include "simulate_system.h"
 
-// TODO: overload constructor with all matrices and vectors from global
-// definition
-
 // Default constructor
 SimulateSystem::SimulateSystem() 
 {
@@ -17,23 +14,6 @@ SimulateSystem::SimulateSystem()
             std::cin >> this->A(i,j);
         } std::cout << std::endl;
     
-    // Generate components for state matrix [B]
-    std::cout << "Define the elements for the input matrix [B]" << std::endl;
-    for(size_t i = 0; i < size; i++)
-        for(size_t j = 0; j < size; j++)
-        {
-            std::cout << "B[" << i << "][" << j << "]: ";
-            std::cin >> this->B(i,j);
-        } std::cout << std::endl;
-
-    // Generate components for state vector {u}
-    std::cout << "Define the elements for the input vector {u}" << std::endl;
-    for(size_t i = 0; i < size; i++)
-    {
-        std::cout << "u[" << i << "]: ";
-        std::cin >> this->u(i);
-    } std::cout << std::endl;
-    
     // Generate components for state vector {x}
     std::cout << "Define the elements for the initial state vector {x0}" << std::endl;
     for(size_t i = 0; i < size; i++)
@@ -42,6 +22,13 @@ SimulateSystem::SimulateSystem()
         std::cin >> this->x0(i);
     } std::cout << std::endl;
     */
+}
+
+// Overloaded constructor with [A] and {x0}
+SimulateSystem::SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> A, Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> x0)
+{
+    this->A = A;
+    this->x0 = x0;
 }
 
 // Default destructor

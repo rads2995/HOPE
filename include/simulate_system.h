@@ -4,9 +4,6 @@
 
 #include "design_system.h"
 
-#include <iostream>
-#include <fstream>
-
 class SimulateSystem 
 {
 private:
@@ -23,6 +20,10 @@ private:
 public:
     // Default constructor
     SimulateSystem();
+
+    // Overloaded constructor with [A] and {x0}
+    // TODO: implement remaining constructors
+    SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> A, Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> x0);
 
     // Default destructor 
     ~SimulateSystem();
