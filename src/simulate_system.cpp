@@ -11,6 +11,7 @@ SimulateSystem::SimulateSystem(matrix_type p_A, vector_type p_x0)
     m_x0 = p_x0;
 }
 
+// Overload constructor with global [A], [B], {u} and {x0}
 SimulateSystem::SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_u)
 {
     m_A = p_A;
@@ -37,3 +38,6 @@ void SimulateSystem::set_m_C(matrix_type p_C) {m_C = p_C;}
 void SimulateSystem::set_m_D(matrix_type p_D) {m_D = p_D;}
 void SimulateSystem::set_m_u(matrix_type p_u) {m_u = p_u;}
 void SimulateSystem::set_m_x0(vector_type p_x0) {m_x0 = p_x0;}
+
+// Implement member method to replace all member matrices elements with those
+// from files (A.txt, x0.txt, etc)

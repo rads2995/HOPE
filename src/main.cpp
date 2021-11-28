@@ -2,6 +2,7 @@
 // numerical integrator with stepper function
 #include "simulate_system.h"
 
+// Read matrices and write system states to file
 #include <fstream>
 
 // Ordinary differential equations numerical solvers
@@ -21,13 +22,10 @@ constexpr PRECISION step_size = 0.01;   // step size (s)
 // {dxdt} = [A]*{x} + [B]*{u}
 //    {y} = [C]*{x} + [D]*{u}
 
-// Example: [A] is 2x2: {{A(0,0), A(0,1)}, {A(1,0), A(1,1)}}
-Eigen::Matrix<PRECISION, num_states, num_states> A 
-{{0, 1}, {-0.5, -1}};
-
-// Example: [x0] is 2x1: {x0(0), x0(1)}
-Eigen::Matrix<PRECISION, num_states, 1> x0
-{0, 0.5};
+Eigen::Matrix<PRECISION, num_states, num_states> A = Eigen::Matrix<PRECISION, num_states, num_states>::Zero();
+//Eigen::Matrix<PRECISION, num_states, num_states> B = Eigen::Matrix<PRECISION, num_states, num_states>::Zero();
+Eigen::Matrix<PRECISION, num_states, 1> x0 = Eigen::Matrix<PRECISION, num_states, 1>::Zero(); 
+//Eigen::Matrix<PRECISION, num_states, 1> u = Eigen::Matrix<PRECISION, num_states, 1>::Zero(); 
 
 // Construct the equations of motion in state-space form
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
@@ -64,9 +62,14 @@ int main()
     // Create system object using global matrices
     SimulateSystem system(A, x0);
     
+    // Copy object's matrices back to the global matrices
+    A = system.get_m_A();
+    //B = system.get_m_B();
+    //u = system.get_m_u();
+    x0 = system.get_m_x0();
+    
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
-    
     // Call integrator function (equidistant integration)
     integrate_const(stepper, state_function, x0, t0, tf, step_size, write_states);
 
