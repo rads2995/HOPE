@@ -2,7 +2,6 @@
 // numerical integrator with stepper function
 #include "simulate_system.h"
 
-#include <iostream>
 #include <fstream>
 
 // Ordinary differential equations numerical solvers
@@ -22,22 +21,21 @@ constexpr PRECISION step_size = 0.01;   // step size (s)
 // {dxdt} = [A]*{x} + [B]*{u}
 //    {y} = [C]*{x} + [D]*{u}
 
-// If A is 2x2: {{A(0,0), A(0,1)}, {A(1,0), A(1,1)}}
+// Example: [A] is 2x2: {{A(0,0), A(0,1)}, {A(1,0), A(1,1)}}
 Eigen::Matrix<PRECISION, num_states, num_states> A 
 {{0, 1}, {-0.5, -1}};
 
-// If x0 is 2x1: {x0(0), x0(1)}
+// Example: [x0] is 2x1: {x0(0), x0(1)}
 Eigen::Matrix<PRECISION, num_states, 1> x0
 {0, 0.5};
 
 // Construct the equations of motion in state-space form
-// NOTE: should work with dynamic matrix instead of explicit size
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
 {   
     dxdt = A * x; // + B * u;
 }
 
-// Write the quations of motion states into the text file
+// Write the system's states into the text file
 void write_states (const Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> &x, const PRECISION t)
 {
     data << t << '\t';
@@ -52,17 +50,20 @@ using namespace boost::numeric::odeint;
 
 int main() 
 {  
+    // Print user-defined simulation parameters to the console
     std::cout << std::endl;
     std::cout << "========================" << std::endl;
     std::cout << "= Numerical Simulation =" << std::endl;
     std::cout << "========================" << std::endl;
-    std::cout << "\nNumber of states: " << num_states << std::endl;
+    std::cout << "= Number of states: " << num_states << "  =" << std::endl;
+    std::cout << "= Initial time: " << t0 << "s     =" << std::endl;
+    std::cout << "= Final time: " << tf << "s      =" << std::endl;
+    std::cout << "= Time step: " << step_size << "s     =" << std::endl;
+    std::cout << "========================" << std::endl;
     
+    // Create system object using global matrices
     SimulateSystem system(A, x0);
     
-    // TEST: display member matrix [A] after construction
-    std::cout << system.SimulateSystem::get_m_A() << std::endl;
-
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
     
