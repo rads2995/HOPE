@@ -2,7 +2,12 @@
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
-#include "design_system.h"
+// Set precision for the simulation (float, double, etc)
+#define PRECISION double
+
+// Include Eigen, a C++ template library for linear algebra 
+// https://eigen.tuxfamily.org/ 
+#include <Eigen/Core>
 
 class SimulateSystem 
 {
@@ -21,7 +26,7 @@ public:
     // Default constructor
     SimulateSystem();
     
-    // Overloaded constructor
+    // Overloaded constructor with global [A] and {x0}
     SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_A, Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_x0);
 
     // Default destructor 

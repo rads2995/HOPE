@@ -2,14 +2,9 @@
 #include "simulate_system.h"
 
 // Default constructor
-SimulateSystem::SimulateSystem() 
-{
-    // Copy global matrices to member matrices
-    //m_A = A;
-    //m_x0 = x0;
-}
+SimulateSystem::SimulateSystem() {}
 
-// Overloaded constructor
+// Overloaded constructor with global [A] and {x0}
 SimulateSystem::SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_A, Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_x0)
 {
     m_A = p_A;

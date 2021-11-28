@@ -61,7 +61,7 @@ int main()
     SimulateSystem system(A, x0);
     
     // TEST: display member matrix [A] after construction
-    //std::cout << system.SimulateSystem::get_m_A() << std::endl;
+    std::cout << system.SimulateSystem::get_m_A() << std::endl;
 
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
