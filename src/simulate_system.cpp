@@ -4,7 +4,38 @@
 // Default constructor
 SimulateSystem::SimulateSystem() 
 {
-    /* GOTTA FIGURE OUT BETTER IMPLEMENTATION!
+    // Copy global matrices to member matrices
+    //m_A = A;
+    //m_x0 = x0;
+}
+
+// Overloaded constructor
+SimulateSystem::SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_A, Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_x0)
+{
+    m_A = p_A;
+    m_x0 = p_x0;
+}
+
+// Default destructor
+SimulateSystem::~SimulateSystem() {}
+
+// Getter methods
+Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_m_A() {return m_A;}
+Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_m_B() {return m_B;}
+Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_m_C() {return m_C;}
+Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_m_D() {return m_D;}
+Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_m_u() {return m_u;}
+Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> SimulateSystem::get_m_x0() {return m_x0;}
+
+// Setter methods
+void SimulateSystem::set_m_A(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_A) {m_A = p_A;}
+void SimulateSystem::set_m_B(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_B) {m_B = p_B;}
+void SimulateSystem::set_m_C(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_C) {m_C = p_C;}
+void SimulateSystem::set_m_D(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_D) {m_D = p_D;}
+void SimulateSystem::set_m_u(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> p_u) {m_u = p_u;}
+void SimulateSystem::set_m_x0(Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> p_x0) {m_x0 = p_x0;}
+
+/* GOTTA FIGURE OUT BETTER IMPLEMENTATION! (code to use later)
     // Generate components for state matrix [A]
     std::cout << "Define the elements for the state matrix [A]" << std::endl;
     for(size_t i = 0; i < size; i++)
@@ -21,31 +52,4 @@ SimulateSystem::SimulateSystem()
         std::cout << "x0[" << i << "]: ";
         std::cin >> this->x0(i);
     } std::cout << std::endl;
-    */
-}
-
-// Overloaded constructor with [A] and {x0}
-SimulateSystem::SimulateSystem(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> A, Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> x0)
-{
-    this->A = A;
-    this->x0 = x0;
-}
-
-// Default destructor
-SimulateSystem::~SimulateSystem() {}
-
-// Getter methods
-Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_A() {return this->A;}
-Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_B() {return this->B;}
-Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_C() {return this->C;}
-Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_D() {return this->D;}
-Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> SimulateSystem::get_u() {return this->u;}
-Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> SimulateSystem::get_x0() {return this->x0;}
-
-// Setter methods
-void SimulateSystem::set_A(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> A) {this->A = A;}
-void SimulateSystem::set_B(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> B) {this->B = B;}
-void SimulateSystem::set_C(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> C) {this->C = C;}
-void SimulateSystem::set_D(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> D) {this->D = D;}
-void SimulateSystem::set_u(Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> u) {this->u = u;}
-void SimulateSystem::set_x0(Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> x0) {this->x0 = x0;}
+*/
