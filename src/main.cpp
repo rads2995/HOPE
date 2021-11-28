@@ -58,7 +58,11 @@ int main()
     
     // Create system object using global matrices
     SimulateSystem system(A, B, C, D, u, x0); 
+   
+    system.matrix_resize();
     
+    std::cout << system.get_m_A() << std::endl;
+
     // Copy object's matrices back to the global matrices
     A = system.get_m_A();
     B = system.get_m_B();
@@ -66,7 +70,9 @@ int main()
     D = system.get_m_D();
     u = system.get_m_u();
     x0 = system.get_m_x0();
-    
+   
+    std::cout << A << std::endl;
+
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
     // Call integrator function (equidistant integration)
