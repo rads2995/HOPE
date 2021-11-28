@@ -1,6 +1,10 @@
 // simulate_system.h: source file containing the SimulateSystem class implementation
 #include "simulate_system.h"
 
+// Read text files containing elements for all matrices
+std::ifstream file_A("A.txt");
+std::ifstream file_x0("x0.txt");
+
 // Default constructor
 SimulateSystem::SimulateSystem() {}
 

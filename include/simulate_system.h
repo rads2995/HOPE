@@ -5,6 +5,9 @@
 // Set precision for the simulation (float, double, etc)
 #define PRECISION double
 
+// Read matrices and write system states to file
+#include <fstream>
+
 // Include Eigen, a C++ template library for linear algebra 
 // https://eigen.tuxfamily.org/ 
 #include <Eigen/Core>
@@ -29,6 +32,12 @@ public:
     
     // Overloaded constructor with global [A], {x0}, [B] and {u}
     SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_u);
+
+    // Overloaded constructor with global [A], {x0}, [B], [C] and {u}
+    SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_C, matrix_type p_u);
+
+    // Overloaded constructor with global [A], {x0}, [B], [C], [D], and {u}
+    SimulateSystem(matrix_type p_A, vector_type p_x0, matrix_type p_B, matrix_type p_C, matrix_type p_D, matrix_type p_u);
 
     // Default destructor 
     ~SimulateSystem();

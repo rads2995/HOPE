@@ -2,9 +2,6 @@
 // numerical integrator with stepper function
 #include "simulate_system.h"
 
-// Read matrices and write system states to file
-#include <fstream>
-
 // Ordinary differential equations numerical solvers
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint/integrate/integrate_const.hpp>
@@ -22,10 +19,15 @@ constexpr PRECISION step_size = 0.01;   // step size (s)
 // {dxdt} = [A]*{x} + [B]*{u}
 //    {y} = [C]*{x} + [D]*{u}
 
+// All matrices and vectors are initialized to zero
+// Matrix [A] and vector {x0} dimensions are determined by the number of states (num_states) variable
+// For the rest, adjust dimensions as needed, for example: Eigen::Matrix<PRECISION, rows, columns> B
 Eigen::Matrix<PRECISION, num_states, num_states> A = Eigen::Matrix<PRECISION, num_states, num_states>::Zero();
-//Eigen::Matrix<PRECISION, num_states, num_states> B = Eigen::Matrix<PRECISION, num_states, num_states>::Zero();
 Eigen::Matrix<PRECISION, num_states, 1> x0 = Eigen::Matrix<PRECISION, num_states, 1>::Zero(); 
-//Eigen::Matrix<PRECISION, num_states, 1> u = Eigen::Matrix<PRECISION, num_states, 1>::Zero(); 
+//Eigen::Matrix<PRECISION, , > B = Eigen::Matrix<PRECISION, , >::Zero();
+//Eigen::Matrix<PRECISION, , > C = Eigen::Matrix<PRECISION, , >::Zero();
+//Eigen::Matrix<PRECISION, , > D = Eigen::Matrix<PRECISION, , >::Zero();
+//Eigen::Matrix<PRECISION, , > u = Eigen::Matrix<PRECISION, , >::Zero();
 
 // Construct the equations of motion in state-space form
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
