@@ -42,6 +42,12 @@ void SimulateSystem::set_m_D(matrix_type p_D) {m_D = p_D;}
 void SimulateSystem::set_m_u(matrix_type p_u) {m_u = p_u;}
 void SimulateSystem::set_m_x0(vector_type p_x0) {m_x0 = p_x0;}
 
+
+void SimulateSystem::matrix_resize()
+{
+    m_A.resize(2,2);
+}
+
 // Read matrices from files 
 void SimulateSystem::read_matrices()
 {

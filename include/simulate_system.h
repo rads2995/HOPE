@@ -5,7 +5,6 @@
 // Set precision for the simulation (float, double, etc)
 #define PRECISION double
 
-// TEST: output to console
 #include <iostream>
 
 // Read matrices and write system states to file
@@ -52,6 +51,9 @@ public:
     void set_m_u(matrix_type p_u);
     void set_m_x0(vector_type p_x0);
 
+    // Resize matrices and vectors
+    void matrix_resize();
+    
     // Read matrices from files
     void read_matrices();
 };
