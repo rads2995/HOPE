@@ -1,15 +1,10 @@
 name: CMake
 on: [push, pull_request]
 jobs:
-  build-Linux:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: cmake -S . -B build/
       - run: make -C build/
-
-  test-linux:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: ./build/HOPE
+      - run: ./build/HOPE
