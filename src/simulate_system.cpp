@@ -45,8 +45,9 @@ void SimulateSystem::set_m_x0(vector_type p_x0) {m_x0 = p_x0;}
 
 void SimulateSystem::matrix_resize()
 {
-    m_B.resize(2,2);
-    m_B.Zero(2,2);
+    unsigned int rows, cols;
+    
+    m_B.resize(2,2); m_B.Zero(2,2);
     //m_C.resize(2,2);
     //m_D.resize(2,2);
     //m_u.resize(2,1);

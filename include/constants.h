@@ -2,8 +2,8 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-// Set precision for the simulation (float, double, etc)
+// Set simulation precision and number of states
 #define PRECISION double
-constexpr unsigned int num_states = 2;  // number of states
+constexpr unsigned int num_states = 2;
 
 #endif // CONSTANTS_H

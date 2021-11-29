@@ -2,7 +2,7 @@
 
 Numerical simulation for state-space systems.
 
-Various parameters can be modified in the src/main.cpp source file.
+Number of states must be declare at compile-time. However, various simulation parameters can be modified at runtime.
 
 ### External Libraries
 - Boost: provides free peer-reviewed portable C++ source libraries
@@ -32,4 +32,4 @@ Various parameters can be modified in the src/main.cpp source file.
 - Write documentation explaining how to use the program
 
 ### Known Limitations
-- Number of states must be known at compile-time (currently working on this)
+- Number of states must be known at compile-time (modify on include/constants.h)
