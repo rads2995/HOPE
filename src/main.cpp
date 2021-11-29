@@ -44,9 +44,8 @@ int main()
     // Create system object using global matrices
     SimulateSystem system(A, B, C, D, u, x0); 
    
-    // system.matrix_resize();
+    system.matrix_resize();
    
-    // TODO: input these values from std::cin 
     // Local simulation parameters
     PRECISION m_t0 = 0;             // initial time (s)
     PRECISION m_tf = 50;            // final time (s)
@@ -75,9 +74,9 @@ int main()
     step_size = m_step_size;
     
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
-    runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
+    //runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
     // Call integrator function (equidistant integration)
-    integrate_const(stepper, state_function, x0, t0, tf, step_size, write_states);
+    //integrate_const(stepper, state_function, x0, t0, tf, step_size, write_states);
 
     return (0);
 }

@@ -8,7 +8,7 @@
 #include <fstream>
 
 // Include Eigen, a C++ template library for linear algebra 
-// https://eigen.tuxfamily.org/ 
+// For more info visit https://eigen.tuxfamily.org/ 
 #include <Eigen/Core>
 
 // Define types for dynamic matrix and dynamic vector 
