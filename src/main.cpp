@@ -11,6 +11,9 @@ std::ofstream data("simulation_result.txt");
 
 // Define {x} vector size and numerical integration parameters
 constexpr unsigned int num_states = 0;  // number of states
+PRECISION t0 {};                        // initial time (s)
+PRECISION tf {};                        // final time (s)
+PRECISION step_size {};                 // step size (s)
 
 // All matrices and vectors are initialized to zero
 Eigen::Matrix<PRECISION, num_states, num_states> A = Eigen::Matrix<PRECISION, num_states, num_states>::Zero();
@@ -24,7 +27,6 @@ Eigen::Matrix<PRECISION, num_states, 1> u = Eigen::Matrix<PRECISION, num_states,
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
 {   
     dxdt = A * x + B * u;
-    //y = C * x + D * u;
 }
 
 // Write the system's states into the text file
@@ -58,6 +60,11 @@ int main()
    
     system.matrix_resize();
     
+    // Local simulation parameters
+    PRECISION m_t0 = 0;             // initial time (s)
+    PRECISION m_tf = 50;            // final time (s)
+    PRECISION m_step_size = 0.01;   // step size (s)
+    
     // Copy object's matrices back to the global matrices
     A = system.get_m_A();
     B = system.get_m_B();
@@ -65,10 +72,9 @@ int main()
     D = system.get_m_D();
     u = system.get_m_u();
     x0 = system.get_m_x0();
-   
-    PRECISION t0 = 0;             // initial time (s)
-    PRECISION tf = 50;            // final time (s)
-    PRECISION step_size = 0.01;   // step size (s)
+    t0 = m_t0;
+    tf = m_tf;
+    step_size = m_step_size;
     
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
