@@ -32,4 +32,4 @@ Number of states must be declare at compile-time. However, various simulation pa
   - odeint: a library for solving initial value problems (IVP) of ordinary differential equations
 <br/><br/>
 - Eigen: a C++ template library for linear algebra: matrices, vectors, numerical solvers, and related algorithms
-- Core: includes Matrix and Array classes, basic linear algebra (including triangular and selfadjoint products), array manipulation
+  - Core: includes Matrix and Array classes, basic linear algebra (including triangular and selfadjoint products), array manipulation
