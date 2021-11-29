@@ -45,12 +45,58 @@ void SimulateSystem::set_m_x0(vector_type p_x0) {m_x0 = p_x0;}
 
 void SimulateSystem::matrix_resize()
 {
-    unsigned int rows, cols;
+    unsigned int rows {}, cols {}, sentinel {};
     
-    m_B.resize(2,2); m_B.Zero(2,2);
-    //m_C.resize(2,2);
-    //m_D.resize(2,2);
-    //m_u.resize(2,1);
+    while (true)
+    {
+        std::cout << "Which matrix do you want to resize?" << std::endl;
+        std::cout << "1. Matrix [B]" << std::endl;
+        std::cout << "2. Matrix [C]" << std::endl;
+        std::cout << "3. Matrix [D]" << std::endl;
+        std::cout << "4. Vector {u}" << std::endl;
+        std::cout << "Enter value: ";
+        std::cin >> sentinel;
+        std::cout << std::endl;
+
+        if (sentinel == 1)
+        {
+            std::cout << "Please enter the new dimensions for matrix [B]" << std::endl;
+            std::cout << "Number of rows: "; std::cin >> rows;
+            std::cout << "Number of columns: "; std::cin >> cols;
+            m_B.resize(rows, cols); m_B.Zero(rows, cols);
+            std::cout << std::endl;
+        }
+
+        else if (sentinel == 2)
+        {
+            std::cout << "Please enter the new dimensions for matrix [C]" << std::endl;
+            std::cout << "Number of rows: "; std::cin >> rows;
+            std::cout << "Number of columns: "; std::cin >> cols;
+            m_C.resize(rows, cols); m_C.Zero(rows, cols);
+            std::cout << std::endl;
+        }
+        
+        else if (sentinel == 3)
+        {
+            std::cout << "Please enter the new dimensions for matrix [D]" << std::endl;
+            std::cout << "Number of rows: "; std::cin >> rows;
+            std::cout << "Number of columns: "; std::cin >> cols;
+            m_D.resize(rows, cols); m_D.Zero(rows, cols);
+            std::cout << std::endl;
+        }
+
+        else if (sentinel == 4)
+        {
+            std::cout << "Please enter the new dimensions for vector {u}" << std::endl;
+            std::cout << "Number of rows: "; std::cin >> rows;
+            std::cout << "Number of columns: "; std::cin >> cols;
+            m_u.resize(rows, cols); m_u.Zero(rows, cols);
+            std::cout << std::endl;
+        }
+
+        else
+            break;
+    }
 }
 
 // Read matrices from files 

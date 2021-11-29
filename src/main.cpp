@@ -10,19 +10,20 @@
 std::ofstream data("simulation_result.txt");
 
 // Define {x} vector size and numerical integration parameters
-PRECISION t0 {};                        // initial time (s)
-PRECISION tf {};                        // final time (s)
-PRECISION step_size {};                 // step size (s)
+PRECISION t0 {}, tf {}, step_size {};
 
 // Define global matrices [A], [B], [C], [D] and vectors {u} and {x0}
 matrix_type A = matrix_type::Zero(num_states, num_states);
+matrix_type B = matrix_type::Zero(num_states, num_states);
+matrix_type C = matrix_type::Zero(num_states, num_states);
+matrix_type D = matrix_type::Zero(num_states, num_states);
+matrix_type u = matrix_type::Zero(num_states, 1);
 vector_type x0 = vector_type::Zero(num_states, 1);
-matrix_type B, C, D, u;
 
 // Construct the equations of motion in state-space form
 void state_function (const Eigen::Matrix<PRECISION, num_states, 1> &x, Eigen::Matrix<PRECISION, num_states, 1> &dxdt, PRECISION t)
 {   
-    dxdt = A * x;// + B * u;
+    dxdt = A * x + B * u;
 }
 
 // Write the system's states into the text file
@@ -43,8 +44,9 @@ int main()
     // Create system object using global matrices
     SimulateSystem system(A, B, C, D, u, x0); 
    
-    system.matrix_resize();
-    
+    // system.matrix_resize();
+   
+    // TODO: input these values from std::cin 
     // Local simulation parameters
     PRECISION m_t0 = 0;             // initial time (s)
     PRECISION m_tf = 50;            // final time (s)
@@ -71,9 +73,6 @@ int main()
     t0 = m_t0;
     tf = m_tf;
     step_size = m_step_size;
-    
-    //TEST
-    std::cout << B << std::endl;
     
     // Call stepper function (Runge-Kutta Dormand-Prince 5 method)
     runge_kutta_dopri5<Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, Eigen::Matrix<PRECISION, num_states, 1>, PRECISION, vector_space_algebra> stepper;
