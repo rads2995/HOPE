@@ -10,7 +10,6 @@
 std::ofstream data("simulation_result.txt");
 
 // Define {x} vector size and numerical integration parameters
-constexpr unsigned int num_states = 2;  // number of states
 PRECISION t0 {};                        // initial time (s)
 PRECISION tf {};                        // final time (s)
 PRECISION step_size {};                 // step size (s)

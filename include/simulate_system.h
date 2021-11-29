@@ -2,12 +2,9 @@
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
-// Set precision for the simulation (float, double, etc)
-#define PRECISION double
+#include "constants.h"
 
 #include <iostream>
-
-// Read matrices and write system states to file
 #include <fstream>
 
 // Include Eigen, a C++ template library for linear algebra 
