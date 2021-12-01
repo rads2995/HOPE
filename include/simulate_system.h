@@ -12,8 +12,8 @@
 #include <Eigen/Core>
 
 // Define types for dynamic matrix and dynamic vector 
-typedef Eigen::Matrix<PRECISION, Eigen::Dynamic, Eigen::Dynamic> matrix_type;
-typedef Eigen::Matrix<PRECISION, Eigen::Dynamic, 1> vector_type;
+typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> matrix_type;
+typedef Eigen::Matrix<double, Eigen::Dynamic, 1> vector_type;
 
 class SimulateSystem 
 {
