@@ -2,8 +2,6 @@
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
-#include "constants.h"
-
 #include <iostream>
 #include <fstream>
 

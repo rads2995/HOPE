@@ -102,6 +102,7 @@ void SimulateSystem::matrix_resize()
 // Read matrices from files 
 void SimulateSystem::read_matrices()
 {
-
+    m_A << 1, 2, 3, 4;
+    m_x0 << 1, 2;
 }
 
