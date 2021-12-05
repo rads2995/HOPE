@@ -1,5 +1,5 @@
 # Add library for source code header files
-add_library(Library main.cpp)
+add_library(Library matrix_functions.cpp)
 target_include_directories(Library PUBLIC ../include ../lib)
 
 # Add source executable and link to library

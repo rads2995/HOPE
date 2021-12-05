@@ -1,15 +1,36 @@
 // main.cpp: source file containing main function
 #include "simulate_system.h"
+#include "matrix_functions.h"
 
-using namespace boost::numeric::odeint;
+// Write states from simulation as columns on text file 
+std::ofstream data("simulation_result.txt");
 
-// Define global matrices and vectors 
+// Define global matrices 
 state_type A, B, C, D, u, x0;
 
+int main() 
+{  
+    double t0 {0}, tf {5}, step_size {0.01};
+    
+    simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size); 
+    return (0);
+}
+
+template<typename T>
+void simulate_system(double t0, double tf, double step_size)
+{
+    matrix_resize(A, x0, 2);
+
+    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
+    boost::numeric::odeint::runge_kutta_dopri5<T, double, T, double, boost::numeric::odeint::vector_space_algebra> stepper;
+    boost::numeric::odeint::integrate_const(stepper, state_function<T>, x0, t0, tf, step_size, write_states<T>);
+}
+
+// Define template state function for various matrix sizes
 template<typename T>
 void state_function (const T &x, T &dxdt, double t)
 {
-    dxdt = A * x + B * u;
+    dxdt = A * x;// + B * u;
 }
 
 template<typename T>
@@ -21,57 +42,4 @@ void write_states (const T &x, const double t)
         data << x[i] << '\t';
     
     data << std::endl; 
-}
-
-int main() 
-{  
-    double t0 {0}, tf {5}, step_size {0.01};
-    
-    two_states_system(t0, tf, step_size); 
-    return (0);
-}
-
-void two_states_system(double t0, double tf, double step_size)
-{
-    A.resize(2,2); A.Zero(2,2);
-    B.resize(2,2); B.Zero(2,2);
-    u.resize(2,1); u.Zero(2,1);
-    x0.resize(2,1); x0.Zero(2,1);
-    
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    runge_kutta_dopri5<Eigen::Matrix<double, 2, 1>, double, Eigen::Matrix<double, 2, 1>, double, vector_space_algebra> stepper;
-    
-    integrate_const(stepper, state_function<Eigen::Matrix<double, 2, 1>>, x0, t0, tf, step_size, write_states<Eigen::Matrix<double, 2, 1>>);
-}
-
-void three_states_system(double t0, double tf, double step_size)
-{
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    runge_kutta_dopri5<Eigen::Matrix<double, 3, 1>, double, Eigen::Matrix<double, 3, 1>, double, vector_space_algebra> stepper;
-    
-    integrate_const(stepper, state_function<Eigen::Matrix<double, 3, 1>>, x0, t0, tf, step_size, write_states<Eigen::Matrix<double, 3, 1>>);
-}
-
-void four_states_system(double t0, double tf, double step_size)
-{
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    runge_kutta_dopri5<Eigen::Matrix<double, 4, 1>, double, Eigen::Matrix<double, 4, 1>, double, vector_space_algebra> stepper;
-    
-    integrate_const(stepper, state_function<Eigen::Matrix<double, 4, 1>>, x0, t0, tf, step_size, write_states<Eigen::Matrix<double, 4, 1>>);
-}
-
-void five_states_system(double t0, double tf, double step_size)
-{
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    runge_kutta_dopri5<Eigen::Matrix<double, 5, 1>, double, Eigen::Matrix<double, 5, 1>, double, vector_space_algebra> stepper;
-    
-    integrate_const(stepper, state_function<Eigen::Matrix<double, 5, 1>>, x0, t0, tf, step_size, write_states<Eigen::Matrix<double, 5, 1>>);
-}
-
-void six_states_system(double t0, double tf, double step_size)
-{
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    runge_kutta_dopri5<Eigen::Matrix<double, 6, 1>, double, Eigen::Matrix<double, 6, 1>, double, vector_space_algebra> stepper;
-    
-    integrate_const(stepper, state_function<Eigen::Matrix<double, 6, 1>>, x0, t0, tf, step_size, write_states<Eigen::Matrix<double, 6, 1>>);
 }

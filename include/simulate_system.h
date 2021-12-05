@@ -2,28 +2,27 @@
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
-// Include necessary libraries from STD
+// Include necessary Standard Library headers
 #include <iostream>
 #include <fstream>
 
 // Include Eigen, a C++ template library for linear algebra 
-// For more info visit https://eigen.tuxfamily.org/ 
+// Info: https://eigen.tuxfamily.org/ 
 #include <Eigen/Core>
 
-// Boost Library's ordinary differential equations numerical solvers
+// Include Boost Library's odeint, an ordinary differential equation numerical integrator
+// Info: https://www.boost.org/doc/libs/1_54_0/libs/numeric/odeint/doc/html/index.html
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
 #include <boost/numeric/odeint/integrate/integrate_const.hpp>
 
-// Write results from simulation as columns on text file 
-std::ofstream data("simulation_result.txt");
-
-// Define types for dynamic matrix and dynamic vector 
+// Define data type for dynamic-size matrices 
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> state_type;
 
-void two_states_system(double t0, double tf, double step_size);
-void three_states_system(double t0, double tf, double step_size);
-void four_states_system(double t0, double tf, double step_size);
-void five_states_system(double t0, double tf, double step_size);
-void six_states_system(double t0, double tf, double step_size);
+// Define template state-space system function and states writter function
+template<typename T> void state_function (const T &x, T &dxdt, double t);
+template<typename T> void write_states (const T &x, const double t);
+
+// Function definition to simulate system based on number of states
+template<typename T> void simulate_system(double t0, double tf, double step_size);
 
 #endif // SIMULATE_SYSTEM_H
