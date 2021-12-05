@@ -7,9 +7,11 @@ Can solve systems with 1-6 number of states. Higher number of states requires mo
 Simulation parameters such as initial time, final time, and integration step size can be modified at runtime.
 
 ### What's Good
+- Solve for the specified number of state variables
+- Solve for the output calculated from the state variables
 - System's matrices and vectors can be resized at runtime
-- System's matrices can be read from text files inside of data directory
-- Matrices' elements can be modified at runtime
+- System's matrices and vectors can be read from text files inside of data directory
+- Elements of all matrices and vectors can be modified at runtime
 
 ### What is Not
 - Higher number of states requires modification of source code

@@ -4,9 +4,10 @@
 
 // Write states from simulation as columns on text file 
 std::ofstream data("simulation_result.txt");
+std::ofstream output("output_result.txt");
 
 // Define global matrices 
-state_type A, B, C, D, u, x0;
+state_type A, B, C, D, u, x0, y;
 
 int main() 
 {  
@@ -72,6 +73,9 @@ template<typename T>
 void state_function (const T &x, T &dxdt, double t)
 {
     dxdt = A * x + B * u;
+    y = C * x + D * u;
+
+    write_output<T>(y);
 }
 
 template<typename T>
@@ -83,4 +87,13 @@ void write_states (const T &x, const double t)
         data << x[i] << '\t';
     
     data << std::endl; 
+}
+
+template<typename T>
+void write_output (const T &y)
+{
+    for (size_t i = 0; i < y.rows(); i++)
+        output << y[i] << '\t';
+    
+    output << std::endl; 
 }
