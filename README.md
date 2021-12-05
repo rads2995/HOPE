@@ -24,6 +24,7 @@ Simulation parameters such as initial time, final time, and integration step siz
 - Optional:
   - Numpy
   - Matplotlib
+  - PyInstaller
 
 ### Project Structure
 - include/  (header files)

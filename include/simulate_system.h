@@ -18,9 +18,11 @@
 // Define data type for dynamic-size matrices 
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> state_type;
 
-// Define template state-space system function and states writter function
+// Define template state-space system function 
 template<typename T> void state_function (const T &x, T &dxdt, double t);
+// Define template function to write state solutions
 template<typename T> void write_states (const T &x, const double t);
+// Define template function to write output solutions
 template<typename T> void write_output (const T &y);
 
 // Function definition to simulate system based on number of states
