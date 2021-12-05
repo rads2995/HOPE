@@ -15,42 +15,41 @@ int main()
    
     std::cout << "How many states in your system?" << std::endl;
     std::cout << "Number of states: ";
-    std::cin >> num_states; 
-    std::cout << std::endl;
+    std::cin >> num_states; std::cout << std::endl;
 
     if (num_states == 1)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size); 
     }
     
     else if (num_states == 2)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size);
     }
     
     else if (num_states == 3)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 3, 1>>(t0, tf, step_size);
     }
     
     else if (num_states == 4)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 4, 1>>(t0, tf, step_size);
     }
     
     else if (num_states == 5)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 5, 1>>(t0, tf, step_size);
     }
     
     else if (num_states == 6)
     {
-        matrix_resize(A, x0, num_states);
+        matrix_resize(A, B, C, D, u, x0, num_states);
         simulate_system<Eigen::Matrix<double, 6, 1>>(t0, tf, step_size);
     }
     
@@ -72,7 +71,7 @@ void simulate_system(double t0, double tf, double step_size)
 template<typename T>
 void state_function (const T &x, T &dxdt, double t)
 {
-    dxdt = A * x;// + B * u;
+    dxdt = A * x + B * u;
 }
 
 template<typename T>

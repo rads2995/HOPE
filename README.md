@@ -1,17 +1,19 @@
 # HOPE: Highly Operational Programming Enviroment
 
-Numerical simulation for state-space systems.
+Numerical simulation for LTI state-space systems.
 
-Number of states must be declare at compile-time. However, various simulation parameters can be modified at runtime.
+Can solve systems with 1-6 number of states. Higher number of states requires modification of main.cpp source file. 
+
+Simulation parameters such as initial time, final time, and integration step size can be modified at runtime.
 
 ### What's Good
 - System's matrices and vectors can be resized at runtime
+- System's matrices can be read from text files inside of data directory
+- Matrices' elements can be modified at runtime
 
 ### What is Not
-- Number of states must be known at compile-time (modify on include/constants.h)
-- Read system's matrices and vectors from text file
-- User can modify components of state matrices and vectors at runtime
-- No documentation on how to use this
+- Higher number of states requires modification of source code
+- No documentation on how to use this application
 
 ### Requirements
 - Build:
