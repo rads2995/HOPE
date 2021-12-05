@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.22)
 
 # Details of the project
 project(HOPE VERSION 1.0
-        DESCRIPTION "Numerical Simulation for Dynamical Systems"
+        DESCRIPTION "Numerical Simulation for LTI State-Space Systems"
         LANGUAGES CXX)
 
 # Specify the C++ standard

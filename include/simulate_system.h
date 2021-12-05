@@ -1,7 +1,8 @@
-// simulate_system.h: header file containing the SimulateSystem class
+// simulate_system.h: header file containing various functions
 #ifndef SIMULATE_SYSTEM_H
 #define SIMULATE_SYSTEM_H
 
+// Include necessary libraries from STD
 #include <iostream>
 #include <fstream>
 
@@ -9,48 +10,20 @@
 // For more info visit https://eigen.tuxfamily.org/ 
 #include <Eigen/Core>
 
+// Boost Library's ordinary differential equations numerical solvers
+#include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
+#include <boost/numeric/odeint/integrate/integrate_const.hpp>
+
+// Write results from simulation as columns on text file 
+std::ofstream data("simulation_result.txt");
+
 // Define types for dynamic matrix and dynamic vector 
-typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> matrix_type;
-typedef Eigen::Matrix<double, Eigen::Dynamic, 1> vector_type;
+typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> state_type;
 
-class SimulateSystem 
-{
-private:
-    // Define member matrices and vectors
-    matrix_type m_A, m_B, m_C, m_D, m_u;
-    vector_type m_x0;
+template<typename T>
+void state_function (const T &x, T &dxdt, double t);
 
-public:
-    // Default constructor
-    SimulateSystem();
-    
-    // Overloaded constructor with global [A], [B], [C], [D], {u} and {x0}
-    SimulateSystem(matrix_type p_A, matrix_type p_B, matrix_type p_C, matrix_type p_D, matrix_type p_u, vector_type p_x0);
-
-    // Default destructor 
-    ~SimulateSystem();
-
-    // Getter methods for member matrices
-    matrix_type get_m_A();
-    matrix_type get_m_B();
-    matrix_type get_m_C();
-    matrix_type get_m_D();
-    matrix_type get_m_u();
-    vector_type get_m_x0();
-    
-    // Setter methods for member matrices
-    void set_m_A(matrix_type p_A);
-    void set_m_B(matrix_type p_B);
-    void set_m_C(matrix_type p_C);
-    void set_m_D(matrix_type p_D);
-    void set_m_u(matrix_type p_u);
-    void set_m_x0(vector_type p_x0);
-
-    // Resize matrices and vectors
-    void matrix_resize();
-    
-    // Read matrices from files
-    void read_matrices();
-};
+// Write the system's states into the text file
+void write_states (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, const double t);
 
 #endif // SIMULATE_SYSTEM_H

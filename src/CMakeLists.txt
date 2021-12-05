@@ -1,5 +1,5 @@
 # Add library for source code header files
-add_library(Library simulate_system.cpp)
+add_library(Library two_states.cpp)
 target_include_directories(Library PUBLIC ../include ../lib)
 
 # Add source executable and link to library
