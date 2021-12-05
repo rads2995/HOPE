@@ -24,6 +24,7 @@ template<typename T>
 void state_function (const T &x, T &dxdt, double t);
 
 // Write the system's states into the text file
-void write_states (const Eigen::Matrix<double, Eigen::Dynamic, 1> &x, const double t);
+template<typename T>
+void write_states (const T &x, const double t);
 
 #endif // SIMULATE_SYSTEM_H
