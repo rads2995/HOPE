@@ -20,11 +20,10 @@ std::ofstream data("simulation_result.txt");
 // Define types for dynamic matrix and dynamic vector 
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> state_type;
 
-template<typename T>
-void state_function (const T &x, T &dxdt, double t);
-
-// Write the system's states into the text file
-template<typename T>
-void write_states (const T &x, const double t);
+void two_states_system(double t0, double tf, double step_size);
+void three_states_system(double t0, double tf, double step_size);
+void four_states_system(double t0, double tf, double step_size);
+void five_states_system(double t0, double tf, double step_size);
+void six_states_system(double t0, double tf, double step_size);
 
 #endif // SIMULATE_SYSTEM_H
