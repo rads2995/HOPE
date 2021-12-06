@@ -1,21 +1,18 @@
 # HOPE: Highly Operational Programming Enviroment
 
-Numerical simulation for LTI state-space systems.
+Numerical simulation for LTI state-space systems using the Dormand-Prince 5 algorithm.
 
-Can solve systems with 1-6 number of states. Higher number of states requires modification of main.cpp source file. 
+Can solve systems with 1 to 6 state variables. Higher number of state variables requires modification of main.cpp source file. 
 
-Simulation parameters such as initial time, final time, and integration step size can be modified at runtime.
+Numerical integration parameters such as initial time, final time, and step size can be modified at runtime from the main menu.
 
-### What's Good
-- Solve for the specified number of state variables
-- Solve for the output calculated from the state variables
-- System's matrices and vectors can be resized at runtime
-- System's matrices and vectors can be read from text files inside of data directory
-- Elements of all matrices and vectors can be modified at runtime
+Results are exported as .txt files in the binary directory for both the state vectors and output vector.
 
-### What is Not
-- Higher number of states requires modification of source code
-- No documentation on how to use this application
+### Highlights
+- Capable of solving systems with 1 to 6 (or more) state variables
+- Capable of solving output equation by using the calculated state variables
+- State-Space system's matrices and vectors are loaded from .txt files inside of /data directory
+- State-space system's matrices and vectors can be resized and edited while program is running
 
 ### Requirements
 - Build:
