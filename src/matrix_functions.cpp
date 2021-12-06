@@ -1,6 +1,8 @@
+// matrix_functions.cpp: source file containing matrix functions implementation
 #include "matrix_functions.h"
 
-// Functions to resize matrices and populate elements
+// Function to resize global matrices and vectors
+// Elements from matrices and vectors are zero-value by default
 void matrix_resize(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0, unsigned int size)
 {
     // TODO: define prompt menu to allow user to define new dimensions for matrices and vectors
