@@ -1,22 +1,34 @@
 // matrix_functions.cpp: source file containing matrix functions implementation
 #include "matrix_functions.h"
 
-// Function to resize global matrices and vectors
-// Elements from matrices and vectors are zero-value by default
-void matrix_resize(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0, unsigned int size)
-{
-    // TODO: define prompt menu to allow user to define new dimensions for matrices and vectors
-
-    m_A.resize(size, size); m_A.Zero(size, size);
-    m_B.resize(size, size); m_B.Zero(size, size);
-    m_C.resize(size, size); m_C.Zero(size, size);
-    m_D.resize(size, size); m_D.Zero(size, size);
-    m_u.resize(size, 1); m_u.Zero(size, 1);
-    m_x0.resize(size, 1); m_x0.Zero(size, 1);
-}
-
 // Function to read matrix elements from text files
-void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0)
+void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0, unsigned int size)
 {
+    unsigned int num_rows {0}, num_cols {0};
+    std::string temp{};
 
+    // Read matrix and vector data text files
+    std::ifstream read_A("data/A.txt");
+    std::ifstream read_B("data/B.txt");
+    std::ifstream read_C("data/C.txt");
+    std::ifstream read_D("data/D.txt");
+    std::ifstream read_u("data/u.txt");
+    std::ifstream read_x0("data/x0.txt");
+
+    // Matrix [A]
+    m_A.resize(size, size);
+
+    for (size_t i = 0; i < size; i++)
+    {
+        for (size_t j = 0; j < size; j++)
+        {
+            read_A >> m_A(i,j);
+        }
+    }
+
+    // Vector {x0}
+    m_x0.resize(size, 1);
+
+    for (size_t i = 0; i < size; i++)
+        read_x0 >> m_x0(i,0);
 }

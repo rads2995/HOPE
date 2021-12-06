@@ -13,8 +13,8 @@ int main()
 {  
     // Define initial time, final time, step size
     // and number of states for numerical integration
-    double t0 {0}, tf {0}, step_size {0};
-    unsigned int select {0}, num_states {0};
+    double t0 {0}, tf {10}, step_size {0.01};
+    unsigned int select {0}, num_states {2};
   
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
     std::cout << std::endl;
@@ -32,7 +32,7 @@ int main()
        
         std::cout << "1. Modify number of state space variables" << std::endl;
         std::cout << "2. Modify numerical integration paremeters" << std::endl;
-        std::cout << "3. Perform numerical simulation" << std::endl;
+        std::cout << "3. Read matrices from data directory and run simulation" << std::endl;
         std::cout << "4. Exit program" << std::endl;
         std::cout << "Please enter your selection: ";
         std::cin >> select; std::cout << std::endl;
@@ -55,46 +55,43 @@ int main()
                 break;
 
             case 3:
+                
                 // Automatic switch statement based on number of state variables
+                matrix_read(A, B, C, D, u, x0, num_states);
+                
                 switch(num_states)
                 {
                     case 1:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
                 
                     case 2:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
             
                     case 3:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 3, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
             
                     case 4:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 4, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
             
                     case 5:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 5, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
             
                     case 6:
-                        matrix_resize(A, B, C, D, u, x0, num_states);
                         simulate_system<Eigen::Matrix<double, 6, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
@@ -129,13 +126,13 @@ template<typename T>
 void state_function (const T &x, T &dxdt, double t)
 {
     // Solve differential equation of state-space system
-    dxdt = A * x + B * u;
+    dxdt = A * x;// + B * u;
     
     // Solve output equation of state-space system
-    y = C * x + D * u;
+    //y = C * x + D * u;
 
     // Write output equation at current step 
-    write_output<T>(y);
+    //write_output<T>(y);
 }
 
 template<typename T>
