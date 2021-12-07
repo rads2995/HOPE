@@ -1,8 +1,20 @@
 // matrix_functions.cpp: source file containing matrix functions implementation
 #include "matrix_functions.h"
 
+unsigned int read_num_states()
+{
+    unsigned int num_rows {0};
+
+    std::ifstream read_x0("data/x0.txt");
+
+    // Obtain number of rows from {x0} vector
+    read_x0 >> num_rows;
+
+    return num_rows;
+}
+
 // Function to read matrix elements from text files
-void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0)
+void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &m_D, state_type &m_u, state_type &m_x0, state_type &m_y)
 {
     unsigned int num_rows {0}, num_cols {0};
 
@@ -36,6 +48,7 @@ void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &
     read_C >> num_rows;
     read_C >> num_cols;
     m_C.resize(num_rows, num_cols);
+    m_y.resize(num_rows, 1);
 
     for (size_t i = 0; i < num_rows; i++)
         for (size_t j = 0; j < num_cols; j++)
@@ -56,7 +69,8 @@ void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &
     m_u.resize(num_rows, num_cols);
 
     for (size_t i = 0; i < num_rows; i++)
-        read_u >> m_u(i,0);
+        for (size_t j = 0; j < num_cols; j++)
+            read_u >> m_u(i,j);
     
     // Vector {x0}
     read_x0 >> num_rows;
@@ -64,5 +78,6 @@ void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &
     m_x0.resize(num_rows, num_cols);
 
     for (size_t i = 0; i < num_rows; i++)
-        read_x0 >> m_x0(i,0);
+        for (size_t j = 0; j < num_cols; j++)
+            read_x0 >> m_x0(i,j);
 }

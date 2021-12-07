@@ -13,7 +13,7 @@ int main()
 {  
     // Define initial time, final time, step size
     // and number of states for numerical integration
-    double t0 {0}, tf {5}, step_size {0.1};
+    double t0 {0}, tf {5}, step_size {0.01};
     unsigned int select {0}, num_states {0};
   
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
@@ -21,6 +21,7 @@ int main()
     
     while (1)
     {
+        num_states = read_num_states();
         std::cout << "=================================" << std::endl;
         std::cout << "Numerical integration parameters:" << std::endl;
         std::cout << "=================================" << std::endl;
@@ -30,10 +31,9 @@ int main()
         std::cout << "Simulation step-size: " << step_size << " [s]" << std::endl;
         std::cout << "=================================" << std::endl;
        
-        std::cout << "1. Modify number of state space variables" << std::endl;
-        std::cout << "2. Modify numerical integration paremeters" << std::endl;
-        std::cout << "3. Read matrices from data directory and run simulation" << std::endl;
-        std::cout << "4. Exit program" << std::endl;
+        std::cout << "1. Modify numerical integration paremeters" << std::endl;
+        std::cout << "2. Read matrices from data directory and run simulation" << std::endl;
+        std::cout << "3. Exit program" << std::endl;
         std::cout << "Please enter your selection: ";
         std::cin >> select; std::cout << std::endl;
 
@@ -41,12 +41,6 @@ int main()
         switch (select) 
         {
             case 1:
-                std::cout << "How many state variables in your system?" << std::endl;
-                std::cout << "Number of state variables: ";
-                std::cin >> num_states; std::cout << std::endl;
-                break;
-
-            case 2:
                 std::cout << "Please enter the new numerical integration parameters." << std::endl;
                 std::cout << "Initial simulation time (seconds): "; std::cin >> t0;
                 std::cout << "Final simulation time (seconds): "; std::cin >> tf;
@@ -54,10 +48,10 @@ int main()
                 std::cout << std::endl;
                 break;
 
-            case 3:
+            case 2:
                 
                 // Automatic switch statement based on number of state variables
-                matrix_read(A, B, C, D, u, x0);
+                matrix_read(A, B, C, D, u, x0, y);
                 
                 switch(num_states)
                 {
@@ -103,7 +97,7 @@ int main()
                         break;
                 } break;
             
-            case 4:
+            case 3:
                 return (0);
 
             default:
@@ -126,10 +120,10 @@ template<typename T>
 void state_function (const T &x, T &dxdt, double t)
 {
     // Solve differential equation of state-space system
-    dxdt = A * x;// + B * u;
+    dxdt = A * x + B * u;
     
     // Solve output equation of state-space system
-    //y = C * x + D * u;
+    y = C * x + D * u;
 
     // Write output equation at current step 
     //write_output<T>(y);

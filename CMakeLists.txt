@@ -2,7 +2,7 @@
 cmake_minimum_required(VERSION 3.22)
 
 # Details of the project
-project(HOPE VERSION 1.0
+project(HOPE VERSION 1.1
         DESCRIPTION "Numerical Simulation for LTI State-Space Systems"
         LANGUAGES CXX)
 
