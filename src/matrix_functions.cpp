@@ -30,7 +30,7 @@ void matrix_read(state_type &m_A, state_type &m_B, state_type &m_C, state_type &
 
     for (size_t i = 0; i < num_rows; i++)
         for (size_t j = 0; j < num_cols; j++)
-            read_B >> B_A(i,j);
+            read_B >> m_B(i,j);
 
     // Matrix [C]
     read_C >> num_rows;

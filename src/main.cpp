@@ -48,9 +48,9 @@ int main()
 
             case 2:
                 std::cout << "Please enter the new numerical integration parameters." << std::endl;
-                std::cout << "Initial simulation time: "; std::cin >> t0;
-                std::cout << "Final simulation time: "; std::cin >> tf;
-                std::cout << "Simulation step-size: "; std::cin >> step_size;
+                std::cout << "Initial simulation time (seconds): "; std::cin >> t0;
+                std::cout << "Final simulation time (seconds): "; std::cin >> tf;
+                std::cout << "Simulation step-size (seconds): "; std::cin >> step_size;
                 std::cout << std::endl;
                 break;
 
