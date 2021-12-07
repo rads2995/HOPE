@@ -13,8 +13,8 @@ int main()
 {  
     // Define initial time, final time, step size
     // and number of states for numerical integration
-    double t0 {0}, tf {10}, step_size {0.01};
-    unsigned int select {0}, num_states {2};
+    double t0 {0}, tf {5}, step_size {0.1};
+    unsigned int select {0}, num_states {0};
   
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
     std::cout << std::endl;
@@ -47,7 +47,7 @@ int main()
                 break;
 
             case 2:
-                std::cout << "Please enter the new numerical integration parameters" << std::endl;
+                std::cout << "Please enter the new numerical integration parameters." << std::endl;
                 std::cout << "Initial simulation time: "; std::cin >> t0;
                 std::cout << "Final simulation time: "; std::cin >> tf;
                 std::cout << "Simulation step-size: "; std::cin >> step_size;
@@ -57,7 +57,7 @@ int main()
             case 3:
                 
                 // Automatic switch statement based on number of state variables
-                matrix_read(A, B, C, D, u, x0, num_states);
+                matrix_read(A, B, C, D, u, x0);
                 
                 switch(num_states)
                 {
@@ -98,7 +98,7 @@ int main()
                         break;
             
                     default:
-                        std::cout << "Invalid value for number of states!" << std::endl;
+                        std::cout << "Error: invalid number of state variables!" << std::endl;
                         std::cout << std::endl;
                         break;
                 } break;
@@ -107,7 +107,7 @@ int main()
                 return (0);
 
             default:
-                std::cout << "Invalid selection from main menu" << std::endl;
+                std::cout << "Error: invalid selection from menu." << std::endl;
                 break;
         }
     }
