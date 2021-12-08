@@ -126,7 +126,7 @@ void state_function (const T &x, T &dxdt, double t)
     y = C * x + D * u;
 
     // Write output equation at current step 
-    //write_output<T>(y);
+    write_output(y);
 }
 
 template<typename T>
@@ -140,11 +140,10 @@ void write_states (const T &x, const double t)
     data << std::endl; 
 }
 
-template<typename T>
-void write_output (const T &y)
+void write_output (const state_type &y)
 {
     for (size_t i = 0; i < y.rows(); i++)
-        output << y[i] << '\t';
+        output << y(i) << '\t';
     
     output << std::endl; 
 }

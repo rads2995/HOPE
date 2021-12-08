@@ -27,8 +27,7 @@ template<typename T>
 void write_states (const T &x, const double t);
 
 // Define template function to write output solutions
-template<typename T> 
-void write_output (const T &y);
+void write_output (const state_type &y);
 
 // Function definition to simulate system based on number of states
 template<typename T> 
