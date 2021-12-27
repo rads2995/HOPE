@@ -1,6 +1,69 @@
-[submodule "libs/odeint"]
+[submodule "Boost's Odeint"]
 	path = libs/odeint
 	url = https://github.com/boostorg/odeint.git
-[submodule "libs/eigen"]
+[submodule "Eigen"]
 	path = libs/eigen
 	url = https://gitlab.com/libeigen/eigen.git
+[submodule "libs/config"]
+	path = libs/config
+	url = https://github.com/boostorg/config.git
+[submodule "libs/utility"]
+	path = libs/utility
+	url = https://github.com/boostorg/utility.git
+[submodule "libs/core"]
+	path = libs/core
+	url = https://github.com/boostorg/core.git
+[submodule "libs/type_traits"]
+	path = libs/type_traits
+	url = https://github.com/boostorg/type_traits.git
+[submodule "libs/fusion"]
+	path = libs/fusion
+	url = https://github.com/boostorg/fusion.git
+[submodule "libs/mpl"]
+	path = libs/mpl
+	url = https://github.com/boostorg/mpl.git
+[submodule "libs/preprocessor"]
+	path = libs/preprocessor
+	url = https://github.com/boostorg/preprocessor.git
+[submodule "libs/static_assert"]
+	path = libs/static_assert
+	url = https://github.com/boostorg/static_assert.git
+[submodule "libs/range"]
+	path = libs/range
+	url = https://github.com/boostorg/range.git
+[submodule "libs/iterator"]
+	path = libs/iterator
+	url = https://github.com/boostorg/iterator.git
+[submodule "libs/concept_check"]
+	path = libs/concept_check
+	url = https://github.com/boostorg/concept_check.git
+[submodule "libs/assert"]
+	path = libs/assert
+	url = https://github.com/boostorg/assert.git
+[submodule "libs/detail"]
+	path = libs/detail
+	url = https://github.com/boostorg/detail.git
+[submodule "libs/function_types"]
+	path = libs/function_types
+	url = https://github.com/boostorg/function_types.git
+[submodule "libs/array"]
+	path = libs/array
+	url = https://github.com/boostorg/array.git
+[submodule "libs/throw_exception"]
+	path = libs/throw_exception
+	url = https://github.com/boostorg/throw_exception.git
+[submodule "libs/units"]
+	path = libs/units
+	url = https://github.com/boostorg/units.git
+[submodule "libs/typeof"]
+	path = libs/typeof
+	url = https://github.com/boostorg/typeof.git
+[submodule "libs/integer"]
+	path = libs/integer
+	url = https://github.com/boostorg/integer.git
+[submodule "libs/ublas"]
+	path = libs/ublas
+	url = https://github.com/boostorg/ublas.git
+[submodule "libs/serialization"]
+	path = libs/serialization
+	url = https://github.com/boostorg/serialization.git

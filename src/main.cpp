@@ -1,6 +1,5 @@
 // main.cpp: source file containing main function
 #include "simulate_system.h"
-#include "matrix_functions.h"
 
 // Define data files for states and output from simulation  
 std::ofstream data("simulation_result.txt");
@@ -49,9 +48,6 @@ int main()
                 break;
 
             case 2:
-                
-                // Automatic switch statement based on number of state variables
-                matrix_read(A, B, C, D, u, x0, y);
                 
                 switch(num_states)
                 {
