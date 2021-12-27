@@ -1,0 +1,7 @@
+[submodule "eigen"]
+    path = lib/
+    url = https://gitlab.com/libeigen/eigen.git
+
+[submodule "Boost"]
+    path = lib/
+    url = https://github.com/boostorg/odeint.git
