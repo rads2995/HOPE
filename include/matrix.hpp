@@ -8,6 +8,6 @@
 typedef Eigen::Matrix<double, Eigen::Dynamic, Eigen::Dynamic> state_type;
 
 // Define global matrices and vectors
-state_type A, B, C, D, u, x0, y;
+extern state_type A, B, C, D, u, x0, y;
 
 #endif // MATRIX_HPP
