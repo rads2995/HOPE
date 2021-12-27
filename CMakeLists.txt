@@ -10,7 +10,7 @@ project(HOPE VERSION 1.0
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add external Boost's odeint library
+# Add Boost's odeint library and required dependencies
 add_library (odeint src/integrator.cpp)
 target_include_directories(odeint PUBLIC 
         libs/odeint/include 
@@ -36,10 +36,10 @@ target_include_directories(odeint PUBLIC
         libs/ublas/include
         libs/serialization/include)
 
-# Add external Eigen library
+# Add Eigen library
 add_library (eigen src/matrix.cpp)
-target_include_directories(eigen PUBLIC libs/eigen/Eigen)
+target_include_directories(eigen PUBLIC libs/eigen/)
 
-# Add source executable and link to library
+# Add source executable and link to libraries
 add_executable(${PROJECT_NAME} src/main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE odeint eigen)

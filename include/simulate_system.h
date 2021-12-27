@@ -1,9 +1,3 @@
-// simulate_system.h: header file containing various functions
-#ifndef SIMULATE_SYSTEM_H
-#define SIMULATE_SYSTEM_H
-
-// Include necessary Standard Library headers
-#include <iostream>
 #include <fstream>
 
 // Define data type for dynamic-size matrices 

@@ -1,5 +1,6 @@
-// main.cpp: source file containing main function
-#include "simulate_system.h"
+// Include necessary Standard Library headers
+#include <iostream>
+#include <fstream>
 
 // Define data files for states and output from simulation  
 std::ofstream data("simulation_result.txt");
