@@ -11,8 +11,10 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add Boost's odeint library and required dependencies
-add_library (odeint src/integrator.cpp)
-target_include_directories(odeint PUBLIC 
+add_library (extern_libs src/integrator.cpp)
+target_include_directories(extern_libs PUBLIC 
+        include
+        libs/eigen/
         libs/odeint/include 
         libs/config/include 
         libs/utility/include 
@@ -36,10 +38,6 @@ target_include_directories(odeint PUBLIC
         libs/ublas/include
         libs/serialization/include)
 
-# Add Eigen library
-add_library (eigen src/matrix.cpp)
-target_include_directories(eigen PUBLIC libs/eigen/)
-
 # Add source executable and link to libraries
 add_executable(${PROJECT_NAME} src/main.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE odeint eigen)
+target_link_libraries(${PROJECT_NAME} PRIVATE extern_libs)
