@@ -1,18 +1,15 @@
-// Include necessary Standard Library headers
 #include <integrator.hpp>
 
 #include <iostream>
 
 int main() 
 {  
-    // Define initial time, final time, step size
-    // and number of states for numerical integration
-    double t0 {0}, tf {5}, step_size {0.01};
-    unsigned int select {0}, num_states {0};
-  
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
     std::cout << std::endl;
     
+    double t0 {0}, tf {10}, step_size {0.01};
+    unsigned int num_states{0}, select{0};
+
     while (1)
     {
         std::cout << "=================================" << std::endl;
@@ -50,7 +47,7 @@ int main()
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
-                
+               /* 
                     case 2:
                         simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
@@ -80,7 +77,7 @@ int main()
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
-            
+                */
                     default:
                         std::cout << "Error: invalid number of state variables!" << std::endl;
                         std::cout << std::endl;
