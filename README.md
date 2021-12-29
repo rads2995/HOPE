@@ -15,7 +15,6 @@ Results are exported as .txt files in the binary directory for both the state ve
 ### Requirements
 - Build:
   - CMake
-<br/><br/>
 
 ### Project Structure
 - include/  (header files)
