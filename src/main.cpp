@@ -1,8 +1,17 @@
+// Include project header files
 #include <integrator.hpp>
 
-state_type A, B, C, D, u, x0, y;  
-
+// Include standard libraries
 #include <iostream>
+
+// Define matrices and vectors as size one with zero value
+state_type A = state_type::Zero(1,1);
+state_type B = state_type::Zero(1,1);
+state_type C = state_type::Zero(1,1);
+state_type D = state_type::Zero(1,1);
+state_type u = state_type::Zero(1,1);
+state_type y = state_type::Zero(1,1);
+state_type x0 = state_type::Zero(1,1);
 
 int main() 
 {  
@@ -10,7 +19,7 @@ int main()
     std::cout << std::endl;
     
     double t0 {0}, tf {10}, step_size {0.01};
-    unsigned int num_states{0}, select{0};
+    unsigned int num_states{1}, select{0};
 
     while (1)
     {
@@ -49,7 +58,7 @@ int main()
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
-               /* 
+
                     case 2:
                         simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
@@ -79,7 +88,7 @@ int main()
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
-                */
+                
                     default:
                         std::cout << "Error: invalid number of state variables!" << std::endl;
                         std::cout << std::endl;
@@ -95,44 +104,4 @@ int main()
         }
     }
     return (0);
-}
-
-template<typename T> 
-void simulate_system(double m_t0, double m_tf, double m_step_size)
-{
-    // Define stepper type as Runge-Kutta Dormand-Prince 5 method
-    boost::numeric::odeint::runge_kutta_dopri5<T, double, T, double, boost::numeric::odeint::vector_space_algebra> stepper;
-    boost::numeric::odeint::integrate_const(stepper, state_function<T>, x0, m_t0, m_tf, m_step_size, write_states<T>);
-}
-
-template<typename T> 
-void state_function (const T &x, T &dxdt, double t)
-{
-    // Solve differential equation of state-space system
-    dxdt = A * x + B * u;
-    
-    // Solve output equation of state-space system
-    y = C * x + D * u;
-
-    // Write output equation at current step 
-    write_output(y);
-}
-
-template<typename T> 
-void write_states (const T &x, const double t)
-{
-    data << t << '\t';
-    
-    for (size_t i = 0; i < x.rows(); i++)
-        data << x[i] << '\t';
-    
-    data << std::endl; 
-}
-
-void write_output (const state_type &y)
-{
-    for (size_t i = 0; i < y.rows(); i++)
-        output << y(i) << '\t';
-    
-    output << std::endl; 
 }
