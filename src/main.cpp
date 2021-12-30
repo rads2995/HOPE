@@ -21,7 +21,7 @@ int main()
     double t0 {0}, tf {10}, step_size {0.01};
     unsigned int num_states{1}, select{0};
 
-    while (1)
+    while (true)
     {
         std::cout << "=================================" << std::endl;
         std::cout << "Numerical integration parameters:" << std::endl;
@@ -54,41 +54,11 @@ int main()
                 switch(num_states)
                 {
                     case 1:
-                        simulate_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size);
+                        state_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;
-
-                    case 2:
-                        simulate_system<Eigen::Matrix<double, 2, 1>>(t0, tf, step_size);
-                        std::cout << "Simulation completed!" << std::endl;
-                        std::cout << std::endl;
-                        break;
-            
-                    case 3:
-                        simulate_system<Eigen::Matrix<double, 3, 1>>(t0, tf, step_size);
-                        std::cout << "Simulation completed!" << std::endl;
-                        std::cout << std::endl;
-                        break;
-            
-                    case 4:
-                        simulate_system<Eigen::Matrix<double, 4, 1>>(t0, tf, step_size);
-                        std::cout << "Simulation completed!" << std::endl;
-                        std::cout << std::endl;
-                        break;
-            
-                    case 5:
-                        simulate_system<Eigen::Matrix<double, 5, 1>>(t0, tf, step_size);
-                        std::cout << "Simulation completed!" << std::endl;
-                        std::cout << std::endl;
-                        break;
-            
-                    case 6:
-                        simulate_system<Eigen::Matrix<double, 6, 1>>(t0, tf, step_size);
-                        std::cout << "Simulation completed!" << std::endl;
-                        std::cout << std::endl;
-                        break;
-                
+               
                     default:
                         std::cout << "Error: invalid number of state variables!" << std::endl;
                         std::cout << std::endl;
