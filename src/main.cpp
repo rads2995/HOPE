@@ -18,7 +18,7 @@ int main()
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
     std::cout << std::endl;
     
-    double t0 {0}, tf {10}, step_size {0.01};
+    double t0 {0}, tf {50}, step_size {0.001};
     unsigned int num_states{1}, select{0};
 
     while (true)
@@ -54,7 +54,8 @@ int main()
                 switch(num_states)
                 {
                     case 1:
-                        state_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size);
+                        nonlinear_system(t0, tf, step_size);
+                        //state_system<Eigen::Matrix<double, 1, 1>>(t0, tf, step_size);
                         std::cout << "Simulation completed!" << std::endl;
                         std::cout << std::endl;
                         break;

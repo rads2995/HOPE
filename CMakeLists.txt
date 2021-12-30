@@ -2,17 +2,15 @@
 cmake_minimum_required(VERSION 3.22)
 
 # Details of the project
-project(HOPE VERSION 1.0
-        DESCRIPTION "Numerical Simulation for LTI State-Space Systems"
-        LANGUAGES CXX)
+project(HOPE LANGUAGES CXX)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Add Boost's odeint library and required dependencies
-add_library (odeint src/integrator.cpp)
-target_include_directories(odeint PUBLIC 
+# Add external libraries and required dependencies
+add_library (extern_libs src/integrator.cpp)
+target_include_directories(extern_libs PUBLIC 
         include
         libs/eigen
         libs/odeint/include 
@@ -38,12 +36,6 @@ target_include_directories(odeint PUBLIC
         libs/ublas/include
         libs/serialization/include)
 
-# Add Eigen library and required dependencies
-add_library (eigen src/matrix.cpp)
-target_include_directories(eigen PUBLIC 
-        include
-        libs/eigen)
-
 # Add source executable and link to libraries
 add_executable(HOPE src/main.cpp)
-target_link_libraries(HOPE PRIVATE odeint eigen)
+target_link_libraries(HOPE PRIVATE extern_libs)

@@ -2,8 +2,8 @@
 #ifndef INTEGRATOR_HPP
 #define INTEGRATOR_HPP
 
-// Include Eigen::Matrix typed from matrix.hpp header file
-#include <matrix.hpp>
+// Include Eigen::Matrix typed from system.hpp header file
+#include <system.hpp>
 
 // Include Boost's odeint library, an ODE numerical integrator
 #include <boost/numeric/odeint/stepper/runge_kutta_dopri5.hpp>
@@ -13,8 +13,8 @@
 #include <fstream>
 
 // Declare and define files to write system's solution and state outputs  
-std::ofstream data("simulation_result.txt");
-std::ofstream output("output_result.txt");
+extern std::ofstream states("states_result.txt");
+extern std::ofstream output("output_result.txt");
 
 // Declare state-space system integration functions
 template<typename T> void state_system(double m_t0, double m_tf, double m_step_size);
@@ -24,8 +24,8 @@ template<typename T> void write_output (const T &y);
 
 // Declare nonlinear system integration functions
 void nonlinear_system(double m_t0, double m_tf, double m_step_size);
-void nonlinear_function(const Eigen::Matrix<double, 3, 1> &x, Eigen::Matrix<double, 3, 1> &dxdt, double t);
-void write_nonlinear_results(const Eigen::Matrix<double, 3, 1> &x, const double t);
+void nonlinear_function(const function_type &x, function_type &dxdt, double t);
+void write_nonlinear_results(const function_type &x, const double t);
 
 // Define integrator.hpp state-space integration template functions
 template<typename T> void state_system(double m_t0, double m_tf, double m_step_size) {
@@ -40,12 +40,12 @@ template<typename T> void state_function (const T &x, T &dxdt, double t) {
 }
 
 template<typename T> void write_states (const T &x, const double t) {
-    data << t << '\t';
+    states << t << '\t';
     
     for (size_t i = 0; i < x.rows(); i++)
-        data << x[i] << '\t';
+        states << x[i] << '\t';
     
-    data << std::endl; 
+    states << std::endl; 
 }
 
 template<typename T> void write_output (const T &y) {
