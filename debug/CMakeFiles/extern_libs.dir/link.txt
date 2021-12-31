@@ -1,2 +1,0 @@
-/usr/bin/ar qc libextern_libs.a CMakeFiles/extern_libs.dir/src/nonlinear_functions.cpp.o
-/usr/bin/ranlib libextern_libs.a

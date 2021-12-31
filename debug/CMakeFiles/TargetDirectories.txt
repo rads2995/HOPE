@@ -1,4 +1,0 @@
-/home/omega/Projects/HOPE/debug/CMakeFiles/extern_libs.dir
-/home/omega/Projects/HOPE/debug/CMakeFiles/HOPE.dir
-/home/omega/Projects/HOPE/debug/CMakeFiles/edit_cache.dir
-/home/omega/Projects/HOPE/debug/CMakeFiles/rebuild_cache.dir
