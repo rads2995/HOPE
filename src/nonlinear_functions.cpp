@@ -2,7 +2,7 @@
 
 // Declare and define files to write nonlinear function solutions
 std::ofstream nonlinear("nonlinear_result.txt");
-array_type n_x0 = {0, 0, 0};
+array_type n_x0 = {10.0, 1.0, 1.0};
 constexpr double sigma = 10.0;
 constexpr double R = 28.0;
 constexpr double b = 8.0 / 3.0;
