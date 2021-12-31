@@ -9,7 +9,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 # Add external libraries and required dependencies
-add_library (extern_libs src/integrator.cpp)
+add_library (extern_libs src/nonlinear_functions.cpp)
 target_include_directories(extern_libs PUBLIC 
         include
         libs/eigen

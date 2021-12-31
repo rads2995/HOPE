@@ -1,17 +1,18 @@
 // Include project header files
-#include <integrator.hpp>
+#include <state_functions.hpp>
+#include <nonlinear_functions.hpp>
 
 // Include standard libraries
 #include <iostream>
 
 // Define matrices and vectors as size one with zero value
-state_type A = state_type::Zero(1,1);
-state_type B = state_type::Zero(1,1);
-state_type C = state_type::Zero(1,1);
-state_type D = state_type::Zero(1,1);
-state_type u = state_type::Zero(1,1);
-state_type y = state_type::Zero(1,1);
-state_type x0 = state_type::Zero(1,1);
+matrix_type A = matrix_type::Zero(1,1);
+matrix_type B = matrix_type::Zero(1,1);
+matrix_type C = matrix_type::Zero(1,1);
+matrix_type D = matrix_type::Zero(1,1);
+matrix_type u = matrix_type::Zero(1,1);
+matrix_type y = matrix_type::Zero(1,1);
+matrix_type x0 = matrix_type::Zero(3,1);
 
 int main() 
 {  
