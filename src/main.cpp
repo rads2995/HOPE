@@ -5,17 +5,19 @@
 // Include standard libraries
 #include <iostream>
 
-// Define matrices and vectors as size one with zero value
-matrix_type A = matrix_type::Zero(1,1);
-matrix_type B = matrix_type::Zero(1,1);
-matrix_type C = matrix_type::Zero(1,1);
-matrix_type D = matrix_type::Zero(1,1);
-matrix_type u = matrix_type::Zero(1,1);
-matrix_type y = matrix_type::Zero(1,1);
-matrix_type x0 = matrix_type::Zero(3,1);
-
 int main() 
 {  
+    // Define matrices and vectors as size one with zero value
+    // TODO: incorporate way to resize at run-time
+    // TODO: incorporate way to change matrix/vector elements at run-time
+    matrix_type A = matrix_type::Zero(1,1);
+    matrix_type B = matrix_type::Zero(1,1);
+    matrix_type C = matrix_type::Zero(1,1);
+    matrix_type D = matrix_type::Zero(1,1);
+    matrix_type u = matrix_type::Zero(1,1);
+    matrix_type y = matrix_type::Zero(1,1);
+    matrix_type x0 = matrix_type::Zero(1,1);
+
     std::cout << "\nWelcome to the LTI state-space system numerical simulator" << std::endl;
     std::cout << std::endl;
     
@@ -51,7 +53,7 @@ int main()
                 break;
 
             case 2:
-                
+                // TODO: read the num_states from [A] matrix before running simulation            
                 switch(num_states)
                 {
                     case 1:

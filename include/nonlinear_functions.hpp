@@ -1,3 +1,4 @@
+// nonlinear_functions.hpp: 
 #ifndef NONLINEAR_FUNCTIONS_HPP
 #define NONLINEAR_FUNCTIONS_HPP
 
